@@ -1,0 +1,34 @@
+<div class="row mb-1">
+  <div class="col">
+      <div class="input-group mb-3 box-shadow">
+       <div class="input-group-append col-md-offset-8">
+          <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+              <button class="btn btn-md btn-primary disabled">Unit Trusts Applications </button>
+            </span>
+
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Applications Status">
+          
+                          <button type="button" [className]="status == 'PENDING' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                           (click)="toggleStatus('PENDING')">PENDING PAYMENT</button>
+                           <button type="button" [className]="status == 'PAID' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                           (click)="toggleStatus('PAID')">PAID  / ACTIVE</button>
+                          
+                        </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="alert alert-success" role="alert">
+    <!-- Showing applications that are in status: {{status}} -->
+  </div>
+
+<div widget class="card border-0 box-shadow">
+<div class="card-body pt-0 widget-body">
+<div class="table-responsive table-striped">
+  <ng2-smart-table *ngIf="dataSet && isLoaded"
+  class="table table-hover" [settings]="settings" [source]="dataSet"
+      (custom)="onCustomAction($event)">
+  </ng2-smart-table>
+</div>
+</div>
+</div>

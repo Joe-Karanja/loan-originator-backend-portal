@@ -1,0 +1,155 @@
+<div *ngIf="data" class="row">
+  <div class=" col-md-3">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        TENANT INFORMATION
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Tenant Name
+          </th>
+          <tr>
+            <td>{{data.tenant_name}}</td>
+          </tr>
+          <th>
+            Email
+          </th>
+          <tr>
+            <td>{{data.email_address}}</td>
+          </tr>
+          <th>
+            Username
+          </th>
+          <tr>
+            <td>{{data.username}}</td>
+          </tr>
+          <th>
+            Database Name
+          </th>
+          <tr>
+            <td>{{data.database_name}}</td>
+          </tr>
+          <th>
+            Database Port
+          </th>
+          <tr>
+            <td>{{data.database_port}}</td>
+          </tr>
+
+          <th>
+            Database Host
+          </th>
+          <tr>
+            <td>{{data.database_host}}</td>
+          </tr>
+
+          <th>
+            Database Dialect
+          </th>
+          <tr>
+            <td>{{data.database_dialect}}</td>
+          </tr>
+
+          <th>
+            Database Params
+          </th>
+          <tr>
+            <td>{{data.database_params}}</td>
+          </tr>
+
+          <th>
+            Description
+          </th>
+          <tr>
+            <td>{{data.description}}</td>
+          </tr>
+
+          <th>
+            Created On
+          </th>
+          <tr>
+            <td>{{data.created_on | date:'mediumDate'}}</td>
+          </tr>
+
+          <th>
+            Last Updated On
+          </th>
+          <tr>
+            <td>{{data.last_update_on | date:'mediumDate'}}</td>
+          </tr>
+
+          <th>
+            Last Updated By
+          </th>
+          <tr>
+            <td>{{data.last_update_by}}</td>
+          </tr>
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class=" col-md-9">
+    <ngb-tabset justify="start">
+      <ngb-tab title="CUSTOMERS">
+        <ng-template ngbTabContent>
+          <app-list-tenant-customers [parentData]="data"></app-list-tenant-customers>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="TRANSACTIONS">
+        <ng-template ngbTabContent>
+          <app-list-tenant-transactions [parentData]="data"></app-list-tenant-transactions>
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab title="USSD CODES">
+        <ng-template ngbTabContent>
+          <app-tenant-ussd-codes-list [parentData]="data"></app-tenant-ussd-codes-list>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="USSD MENUS">
+        <ng-template ngbTabContent>
+          <app-tenant-ussd-menus [parentData]="data"></app-tenant-ussd-menus>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="PAYBILL No's">
+        <ng-template ngbTabContent>
+          <app-paybill-numbers-list [parentData]="data"></app-paybill-numbers-list>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="LANGUAGES">
+        <ng-template ngbTabContent>
+          <app-tenant-languages-list [parentData]="data"></app-tenant-languages-list>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="CURRENCIES">
+        <ng-template ngbTabContent>
+          <app-tenant-currencies-list [parentData]="data"></app-tenant-currencies-list>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="ADDRESSES">
+        <ng-template ngbTabContent>
+          <app-list-tenant-addresses [parentData]="data"></app-list-tenant-addresses>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="NOTIFICATION TEMPLATES">
+        <ng-template ngbTabContent>
+          <app-list-tenant-notification-templates [parentData]="data"></app-list-tenant-notification-templates>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="USSD SESSIONS">
+          <ng-template ngbTabContent>
+            <app-list-ussd-sessions [parentData]="data"></app-list-ussd-sessions>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="SERVICES">
+          <ng-template ngbTabContent>
+            <app-list-tenant-transaction-services [parentData]="data"></app-list-tenant-transaction-services>
+          </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+  </div>
+
+</div>

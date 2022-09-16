@@ -1,0 +1,69 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" [formGroup]="form">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label class="text-gray">Company Name</label>
+                  <input formControlName="valuer_name" class="form-control" type="text">
+                  <small class="text-danger" *ngIf="form.get('valuer_name').touched && form.get('valuer_name').hasError('required')">Required
+                      Field</small>
+              </div>
+          </div>
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label class="text-gray">Location</label>
+                  <input formControlName="valuer_location" class="form-control" type="text">
+                  <small class="text-danger" *ngIf="form.get('valuer_location').touched && form.get('valuer_location').hasError('required')">Required
+                      Field</small>
+              </div>
+          </div>
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label class="text-gray">Box No</label>
+                  <input formControlName="valuer_address" class="form-control" type="text">
+                  <small class="text-danger" *ngIf="form.get('valuer_address').touched && form.get('valuer_address').hasError('required')">Required
+                      Field</small>
+              </div>
+          </div>
+          <div class="col-sm-12">
+              <div class="form-group">
+                  <label class="text-gray">Email</label>
+                  <input formControlName="valuer_email" class="form-control" type="text">
+                  <small class="text-danger" *ngIf="form.get('valuer_email').touched && form.get('valuer_email').hasError('required')">Required
+                      Field</small>
+              </div>
+          </div>
+          <!-- <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="text-gray">Revenue Share  (% On Valuation Fee)</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div> -->
+          <div class="col-sm-12">
+            <div class="form-group">
+                <label class="text-gray"> Description</label>
+                <input formControlName="valuer_description" class="form-control" type="text">
+                <small class="text-danger" *ngIf="form.get('valuer_description').touched && form.get('valuer_description').hasError('required')">Required
+                    Field</small>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="loading" class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+    <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div *ngFor="let err of errorMessages">{{err}}</div>
+    </div>
+    <div class="modal-footer">
+  
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+      <button [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary" (click)="submitData()">Save Record</button>
+  
+    </div>

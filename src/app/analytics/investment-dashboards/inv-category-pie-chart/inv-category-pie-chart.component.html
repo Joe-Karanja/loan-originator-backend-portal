@@ -1,0 +1,11 @@
+<!--
+<div>
+  <h4>{{selectedProduct.name | uppercase}}</h4>
+  <h6>{{selectedProduct.value | currency: 'Kes.'}}</h6>
+</div> -->
+<ngx-charts-pie-grid
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="single"
+  (select)="onSelect($event)">
+</ngx-charts-pie-grid>

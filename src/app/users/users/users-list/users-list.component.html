@@ -1,0 +1,27 @@
+<div class="row mb-1">
+    <div class="col">
+        <div class="input-group mb-3 box-shadow">
+         <div class="input-group-append col-md-offset-8">
+            <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+                <button class="btn btn-md btn-default disabled">All System Users</button>
+              </span>
+                <span  (click)="openModal('')" class="input-group-text border-top-0 border-right-0 border-bottom-0">
+
+                <button class="btn btn-md btn-success">Add User</button></span>
+                <span   class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                        class="fa fa-th"></i></span>
+                <span   class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                        class="fa fa-list"></i></span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div widget class="card border-0 box-shadow">
+  <div class="card-body pt-0 widget-body">
+  <div class="table-responsive table-striped table-bordered">
+    <ng2-smart-table class="table table-hover" [settings]="settings" [source]="dataSet"
+        (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </div>
+  </div>
+  </div>

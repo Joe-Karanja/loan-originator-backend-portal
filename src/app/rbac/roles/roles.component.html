@@ -1,0 +1,76 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div class="margin-table"></div>
+    <div fxFlex.gt-sm="90.00%" fxFlex="100">
+      <nz-card [nzBordered]="false" nzTitle="Available Roles (system and non-system)" [nzExtra]="extraTemplate" nzSize="large">
+        <nz-table #basicTable [nzData]="roles" ngSize="small"[nzFrontPagination]="false"[nzLoading]="loading" [nzTotal]="total" [nzPageSize]="perPage" [nzPageIndex]="page" nzShowSizeChanger (nzQueryParams)="onQueryParamsChange($event)">
+          <thead>
+            <tr>
+              <th>Role Name</th>
+              <th>Description</th>
+              <th>Role Type</th>
+              <th>Status</th>
+              <th>CreatedOn</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody nzSize="small">
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{data.name | titlecase}}</td>
+              <td >{{data.remarks}}</td>
+              <td *ngIf="data.isSystemRole == true; else inactive">
+                <button nz-button nzType="primary" nzSize="small" nzDanger  nzGhost nzShape="round">System Role</button>
+              </td>
+              <ng-template #inactive>
+                <td>
+                  <button  nz-button nzType="primary" nzSize="small" nzGhost nzShape="round">Custom Role</button>
+                </td>
+              </ng-template>
+              <td>
+                <app-active-status-label [labelValue]="data.isActive"></app-active-status-label>
+              </td>
+              <td>{{data.createdOn | date: 'medium'}}</td>
+              
+              <td>
+                  <button *ngIf="data.isSystemRole; else editable" nz-button nzSize="small" nzType="primary"  nzGhost
+                  [matMenuTriggerFor]="menu" disabled><mat-icon>settings</mat-icon>&nbsp;
+                  Actions
+                  </button>
+                  <ng-template #editable>
+                    <button nz-button nzSize="small" nzType="primary"  nzGhost
+                  [matMenuTriggerFor]="menu" ><mat-icon>settings</mat-icon>&nbsp;
+                  Actions
+                  </button>
+                  </ng-template>
+                  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                      <!-- <button mat-menu-item (click)="viewUser(element)">
+                          <mat-icon>remove_red_eye</mat-icon>View
+                      </button> -->
+                      <button mat-menu-item (click)="editRole(data)" *ngIf="!data.isSystemRole">
+                        <mat-icon>edit</mat-icon>Edit
+                    </button>
+                      <!-- <button mat-menu-item (click)="archive(element)" *ngIf="!data.isSystemRole">
+                          <mat-icon>restore_from_trash</mat-icon>
+                          Archive
+                      </button> -->
+                  </mat-menu>
+              </td>
+            </tr>
+          </tbody>
+      </nz-table>
+      </nz-card>
+      <ng-template #extraTemplate>
+        <button nz-button nzType="primary" (click)="addRole('')" style="margin-bottom: 10px;"><mat-icon>assignment_ind</mat-icon>&nbsp;Add Role</button>&nbsp;
+        <button nz-button nzType="primary" [matMenuTriggerFor]="menu"><mat-icon>import_export</mat-icon>&nbsp;Export Data</button>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+            <button mat-menu-item (click)="exportXLSX()">
+                <mat-icon>file_copy</mat-icon>
+                XLSX
+            </button>
+            <button mat-menu-item (click)="exportPDF()">
+                <mat-icon>picture_as_pdf</mat-icon>
+                PDF
+            </button>
+        </mat-menu>
+      </ng-template>
+    </div>
+</div>

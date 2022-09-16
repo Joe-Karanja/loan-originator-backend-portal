@@ -1,0 +1,295 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button (click)="closeModal()" aria-label="Close" class="close" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" [formGroup]="form">
+
+    <mat-tab-group mat-stretch-tabs>
+
+        <mat-tab label="General Details">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="form-group">
+                        <input
+                            #fileUpload
+                            (change)="onFileChange($event)"
+                            class="form-control"
+                            formControlName="file"
+                            hidden
+                            id="file"
+                            type="file"
+                        />
+                        <div *ngIf="form.get('file')?.touched && form.get('file')?.invalid" class="alert alert-danger" >
+                            <div *ngIf="form.get('file')?.hasError('required')">
+                                File is required.
+                            </div>
+                        </div>
+                    </div>
+                    <img *ngIf="imageSrc" src="../../../assets/img/logos/logo.jpg" class="profile-pic text-center"/>
+                    <br/>
+                    <button (click)="fileUpload.click()" class="btn btn-info btn-sm profileImg">
+                        Upload Logo
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-12">
+                    <p class="text-center" style="font-weight: 700; font-size: 120%">General Details</p>
+                </div>
+
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Company Name</label>
+                        <input class="form-control" formControlName="name" type="text">
+                        <small *ngIf="form.get('name').touched && form.get('name').hasError('required')" class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Registration No.</label>
+                        <input class="form-control" formControlName="regNo" type="text">
+                        <small *ngIf="form.get('regNo').touched && form.get('regNo').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Telephone number</label>
+                        <input class="form-control" formControlName="phone" type="text">
+                        <small *ngIf="form.get('phone').touched && form.get('phone').hasError('required')" class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Contact Email</label>
+                        <input class="form-control" formControlName="email" type="email">
+                        <small *ngIf="form.get('email').touched && form.get('email').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Account number</label>
+                        <input class="form-control" formControlName="accountNo" type="text">
+                        <small *ngIf="form.get('accountNo').touched && form.get('accountNo').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">KRA Pin</label>
+                        <input class="form-control" formControlName="kraPin" type="text">
+                        <small *ngIf="form.get('kraPin').touched && form.get('kraPin').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Branch</label>
+                        <input class="form-control" formControlName="branch" type="text">
+                        <small *ngIf="form.get('branch').touched && form.get('branch').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Physical Address</label>
+                        <input class="form-control" formControlName="physicalAddress" type="text">
+                        <small *ngIf="form.get('physicalAddress').touched && form.get('physicalAddress').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Postal Address</label>
+                        <input class="form-control" formControlName="postalAddress" type="text">
+                        <small *ngIf="form.get('postalAddress').touched && form.get('postalAddress').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Sector/ Industry</label>
+                        <input class="form-control" formControlName="sector" type="text">
+                        <small *ngIf="form.get('sector').touched && form.get('sector').hasError('required')"
+                               class="text-danger">Required Field</small>
+                    </div>
+                </div>
+
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Banking Details">
+            <div class="row">
+                <hr>
+                <div class="mx-auto col-12">
+                    <p class="text-center" style="font-weight: 700; font-size: 120%">Banking Details</p>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Opening Date</label>
+                        <input class="form-control" formControlName="openingDate" type="number">
+                        <small *ngIf="form.get('openingDate').touched && form.get('openingDate').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Closing Date</label>
+                        <input class="form-control" formControlName="closingDate" type="number">
+                        <small *ngIf="form.get('closingDate').touched && form.get('closingDate').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Processing Fee Percentage(%)</label>
+                        <input class="form-control" formControlName="processingFee" type="number">
+                        <small *ngIf="form.get('processingFee').touched && form.get('processingFee').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Loan Percentage (%)</label>
+                        <input class="form-control" formControlName="loanPercentage" type="number">
+                        <small *ngIf="form.get('loanPercentage').touched && form.get('loanPercentage').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+<!--                <div class="col-sm-4">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="text-gray">Do you bank with us?</label>-->
+<!--                        <select-->
+<!--                                class="form-control"-->
+<!--                                formControlName="bankWithUs"-->
+<!--                                id="bankWithUs"-->
+<!--                                name="bankWithUs"-->
+<!--                        >-->
+<!--                            <option *ngFor="let item of [{id: 'Yes'},{id: 'No'}]"-->
+<!--                                    [value]="item.id"-->
+<!--                            >{{ item.id | titlecase}}</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Pay Format (Net / Gross pay)</label>
+                        <select
+                                class="form-control"
+                                formControlName="meansOfUploadingEmployeeData"
+                                id="meansOfUploadingEmployeeData"
+                                name="meansOfUploadingEmployeeData"
+                        >
+                            <option *ngFor="let item of [{id: 'Loan Limit'},{id: 'Gross Pay'}]"
+                                    [value]="item.id"
+                            >{{ item.id | titlecase}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Currency</label>
+                        <select
+                                class="form-control"
+                                formControlName="currency"
+                                id="currency"
+                                name="currency"
+                        >
+                            <option *ngFor="let item of [{id: 'Kes.'}, {id: 'Usd'}, {id: 'Euro'}]"
+                                    [value]="item.id"
+                            >{{ item.id | titlecase}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4"></div>
+
+
+
+
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Contact Information">
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+    <hr>
+
+
+
+
+    <!--Rudisha hii for document upload-->
+
+    <!--    <div class="col-md-12">-->
+    <!--        <input #imageInput (change)="processFile(imageInput)" [(ngModel)]="image" accept="image/*"-->
+    <!--               class="img-upload-btn form-control" hidden-->
+    <!--               id="file" name="image" type='file'>-->
+    <!--        <button (click)="imageInput.click()" class="btn upload-btn btn-primary btn-block rounded-0" type="button">-->
+    <!--            <span *ngIf="!image"><i class="fa fa-upload"></i> Upload company certificate</span>-->
+
+    <!--            <span *ngIf="image"><i class="fa fa-refresh"></i> Change Image... </span>-->
+    <!--        </button>-->
+
+    <!--        <div class="image-wrapper">-->
+    <!--            <i (click)="removeImage()" *ngIf="image" class="fa fa-times delete-img"></i>-->
+    <!--            <img *ngIf="image" [attr.src]="image" height="100px" width="100%">-->
+    <!--            &lt;!&ndash; <img [src]="pest.avatar" *ngIf="!image" width="100%"> &ndash;&gt;-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--Rudisha hii for document upload-->
+
+    <div *ngIf="loading" class="progress">
+        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75"
+             class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+             style="width: 75%"></div>
+    </div>
+    <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div *ngFor="let err of errorMessages">{{err}}</div>
+    </div>
+    <div class="modal-footer">
+
+        <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Close</button>
+        <button (click)="submitData()" [disabled]="!form.valid" class="btn  btn-md btn-primary" type="button">Save
+            Record
+        </button>
+
+    </div>
+</div>
+

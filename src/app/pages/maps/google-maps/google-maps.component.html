@@ -1,0 +1,10 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"  [mapTypeControl]="true">
+    <agm-marker *ngFor="let marker of markers" 
+    [latitude]="marker.latitude" [longitude]="marker.longitude"
+     [markerDraggable]="true" [title] = "marker.region_name" [label] = "marker.pest_local_name"> </agm-marker>
+</agm-map> 
+<!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true">
+        <agm-marker [latitude]="lat3" [longitude]="lng3" [markerDraggable]="true"></agm-marker>
+        <agm-marker [latitude]="lat2" [longitude]="lng2" [markerDraggable]="true"></agm-marker>
+    </agm-map> -->
+

@@ -1,0 +1,48 @@
+<div class="row mb-1">
+    <div class="col">
+        <div class="input-group mb-3 box-shadow">
+            <div class="input-group-append col-md-offset-8">
+        <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+            <button class="btn btn-md btn-primary disabled">Loan Applications </button>
+          </span>
+
+
+                <div aria-label="Applications Status" class="btn-group btn-group-sm" role="group">
+
+                    <button (click)="toggleStatus('submitted')" [className]="status == 'submitted' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                            id="button"
+                            routerLinkActive="active" type="button">NEW APPLICATIONS
+                    </button>
+                    <button (click)="toggleStatus('verified' )" [className]="status == 'verified' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                            id="button"
+                            routerLinkActive="active" type="button">VERIFIED
+                    </button>
+                    <button (click)="toggleStatus('rejected')" [className]="status == 'rejected' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                            id="button"
+                            routerLinkActive="active" type="button">REJECTED
+                    </button>
+                    <button (click)="toggleStatus('approved')" [className]="status == 'approved' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                            id="button"
+                            routerLinkActive="active" type="button">APPROVED
+                    </button>
+                </div>
+
+                <div class="float-right">
+                    <button type="button" class="btn btn-danger m-2" (click)="exportReport('')" routerLinkActive="active" >Export</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card border-0 box-shadow" widget>
+    <div class="card-body pt-0 widget-body">
+        <p style="font-weight: 500; font-size: 80%" class="text-right mt-2">Total Records: 11</p>
+        <div class="table-responsive table-striped table-bordered mt-2">
+            <ng2-smart-table (custom)="onCustomAction($event)"
+                             *ngIf="dataSet && isLoaded" [settings]="settings" [source]="dataSet"
+                             class="table table-hover">
+            </ng2-smart-table>
+        </div>
+    </div>
+</div>

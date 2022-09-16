@@ -1,0 +1,192 @@
+<div class="row">
+    <div class="col-md-4" *ngIf="application">
+      <div widget class="card border-0 box-shadow">
+        <div class="text-center pt-2" style="color: green;">
+          CLAIM INFORMATION
+        </div>
+        <div class="card-body pt-0 widget-body">
+          <table class="table-responsive">
+            <th>
+              Date of incident
+            </th>
+            <tr>
+              <td>{{application.date_of_accident | date: 'mediumDate'}}</td>
+            </tr>
+            <th>
+                Place of accident
+              </th>
+              <tr>
+                <td>{{application.place_of_accident}}</td>
+              </tr>
+            <th>
+                Has Been Reported
+              </th>
+              <tr>
+                <td>{{application.has_been_reported}}</td>
+              </tr>
+            <th>
+                Reporting Date
+              </th>
+              <tr>
+                <td>{{application.esb_timestamp | date: 'mediumDate'}}</td>
+              </tr>
+
+            <th>
+              Vehicle Registration No
+            </th>
+            <tr>
+              <td>{{application.reg_no}}</td>
+            </tr>
+            <th>
+                Policy Number
+              </th>
+              <tr>
+                <td>{{application.policy_number}}</td>
+              </tr>
+              <th>
+                  Had Casualties
+                </th>
+                <tr>
+                  <td>{{application.was_there_casualties}}</td>
+                </tr>
+
+                <th>
+                    Settlement Amount
+                  </th>
+                  <tr>
+                    <td>{{application.settlement_amount | currency: 'Kes.'}}</td>
+                  </tr>
+
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngIf="application">
+      <div widget class="card border-0 box-shadow">
+        <div class="text-center pt-2" style="color: green;">
+          COVER DETAILS
+        </div>
+        <div class="card-body pt-0 widget-body">
+          <table class="table-responsive">
+            <th>
+              Policy Is Active
+            </th>
+            <tr>
+              <td>{{application.policy_active}}</td>
+            </tr>
+            <th>
+              Policy Number
+            </th>
+            <tr>
+              <td>{{application.policy_number}}</td>
+            </tr>
+            <th>
+              Premium Amount
+            </th>
+            <tr>
+              <td>{{application.premium_amount}}</td>
+            </tr>
+            <th>
+                Cover Start Date
+              </th>
+              <tr>
+                <td>{{application.cover_start_date | date: 'mediumDate'}}</td>
+              </tr>
+              <th>
+                  Cover End Date
+                </th>
+                <tr>
+                  <td>{{application.cover_end_date | date: 'mediumDate'}}</td>
+                </tr>
+          </table>
+        </div>
+      </div>
+
+      <div widget class="card border-0 box-shadow">
+          <div class="text-center pt-2" style="color: green;">
+            UPLOADED ACCIDENT FILES
+          </div>
+          <div class="card-body pt-0 widget-body">
+            <div *ngFor = "let img of image">
+                <img src ="{{'data:image/jpg;base64,' + img.image}}"  width="100%">
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+    <div class="col-md-4" *ngIf="application">
+        <div widget class="card border-0 box-shadow">
+            <div class="text-center pt-2" style="color: green;">
+                Verify and approve/reject
+              </div>
+      <div class="card-body pt-0 widget-body">
+        <div [formGroup]="form">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group d-flex justify-content-between">
+                <div class="custom-control custom-checkbox">
+                  <input formControlName="police_absract_check" type="checkbox"
+                  class="custom-control-input" id="police_absract_check">
+                  <label class="custom-control-label" for="police_absract_check">Police Abstract</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group d-flex justify-content-between">
+                  <div class="custom-control custom-checkbox">
+                    <input formControlName="inspection_check" type="checkbox" class="custom-control-input" id="inspection_check">
+                    <label class="custom-control-label" for="inspection_check">Inspection Report </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group d-flex justify-content-between">
+                    <div class="custom-control custom-checkbox">
+                      <input formControlName="medical_check" type="checkbox" class="custom-control-input" id="medical_check">
+                      <label class="custom-control-label" for="medical_check">Medical Report </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group d-flex justify-content-between">
+                      <div class="custom-control custom-checkbox">
+                        <input formControlName="image_check" type="checkbox" class="custom-control-input" id="image_check">
+                        <label class="custom-control-label" for="image_check">Vehicle/Accident Images </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+          <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label class="text-gray">Narration</label>
+                  <textarea formControlName="inspection_comment" class="form-control" type="text"></textarea>
+                  <small class="text-danger"
+                    *ngIf="form.get('inspection_comment').touched && form.get('inspection_comment').hasError('required')">Required
+                    Field</small>
+                </div>
+              </div>
+            </div>
+          <div class="modal-footer">
+               <button   type="button" class="btn  btn-md btn-primary" (click)="submitData()"><i class="fa fa-check"></i>Forward To Approver</button>
+          </div>
+
+        </div>
+      </div>
+      </div>
+
+  </div>
+

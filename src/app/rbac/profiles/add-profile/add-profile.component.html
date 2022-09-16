@@ -1,0 +1,45 @@
+<div>
+<nz-card [nzBordered]="false" nzTitle="{{cardTitle}}" [nzExtra]="extraTemplate" [nzActions]="[actionAdd]">
+    <form nz-form [formGroup]="form">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Profile name</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="This field is required">
+                <input nz-input formControlName="name" id="name">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="remarks">Remarks</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="This field is required">
+              <textarea rows="3" nz-input formControlName="remarks" id="remarks"></textarea>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="status">Active Status</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="This field is required">
+                <nz-select formControlName="status">
+                    <div *ngIf="edit; else createTemplate">
+                        <nz-option nzLabel="Active" nzValue=true>Active</nz-option>
+                        <nz-option nzLabel="Disabled" nzValue=false>Disabled</nz-option>
+                    </div>
+                    <ng-template #createTemplate>
+                        <nz-option nzLabel="Active" nzValue=true>Active</nz-option>
+                        <nz-option nzLabel="Disabled" nzValue=false>Disabled</nz-option>
+                    </ng-template>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <div *ngIf="errorMessage">
+            <p class="text-danger">{{errorMessage}}</p>
+        </div>
+    </form>
+</nz-card>
+<ng-template #extraTemplate>
+    <button mat-mini-fab aria-label="close dialog" title="close dialog" class="atma-danger" (click)="close()"><mat-icon>close</mat-icon></button>
+</ng-template>
+<ng-template #actionAdd>
+    <button *ngIf="edit == false; else editBtn" nz-button nzSize="small" nzType="primary" [disabled]="!form.valid" (click)="addProfile()" [nzLoading]="loading">Create Profile</button> 
+    <ng-template #editBtn>
+        <button nz-button nzSize="medium" nzType="primary" [nzLoading]="loading" [disabled]="!form.valid" (click)="editProfileDetails()">Edit Profile</button>
+    </ng-template>
+</ng-template>
+</div>

@@ -1,0 +1,12 @@
+<div class="sidebar-outer">
+    <a class="logo d-flex align-items-center text-center mb-2 mt-2 mr-6"  style="background: #005b82 !important" routerLink="/" (click)="closeSubMenus()" *ngIf="settings.theme.sidebarIsFixed">
+<!--         <span *ngIf="loggedIn === 'user'"  class="icea"><img width="150px" style="" src="assets/img/logos/eclectics-logo.png" alt=""></span>-->
+
+        <span *ngIf="loggedIn === 'user'"  class="icea mx-auto"><img height="26px" style="padding: 0; margin: 0" src="assets/img/logos/eclecticswhite.png" alt=""></span>
+
+         <span *ngIf="loggedIn !== 'user'"  class="icea mx-auto">Advancys</span>
+        <!-- <img src="assets/img/logos/icea-logo.png" alt="INSURETECH" >  -->
+        <hr>
+    </a>
+    <app-vertical-menu [menuItems]="menuItems"></app-vertical-menu>
+</div>

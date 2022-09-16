@@ -1,0 +1,180 @@
+<div class="container">
+    <div class="row">
+        <div [formGroup]="form" class="modal-body">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Loan Id</label>
+                        <input [value]="'1'" class="form-control" disabled type="text">
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Collateral Type</label>
+
+                        <select formControlName="collateralType" class="form-control custom-select" id="collateralType" >
+                            <option *ngFor="let record of [
+                                {name: 'Cash/treasury bills', id: 0},
+                                {name: 'Property', id: 1},
+                                {name: 'Motor Vehicles', id: 2},
+                                {name: 'Debenture/Shares', id: 3},
+                                {name: 'Insurance', id: 4}
+                            ]"
+                             [value]="record.id">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Board-Meetings Evidenced</label>
+                        <select formControlName="boardMeetingEvidenced" class="form-control custom-select" id="boardMeetingEvidenced" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">TurnOver Inline With Financials</label>
+
+                        <select formControlName="turnOverInlineWithFinancials" class="form-control custom-select" id="turnOverInlineWithFinancials" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Excesses In Account Evidenced</label>
+                        <select formControlName="excessesInAccountEvidenced" class="form-control custom-select" id="excessesInAccountEvidenced" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">CRB Report</label>
+
+                        <select formControlName="crbReport" class="form-control custom-select" id="crbReport" >
+                            <option *ngFor="let record of ['Positively listed with performing facilities', 'Positive listing: performing  facilities with default history', 'Negative listing']" [value]="record">
+                                {{record}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Kra Pin Document Approved</label>
+                        <select formControlName="isKraPinDocumentApproved" class="form-control custom-select" id="isKraPinDocumentApproved" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+<!--                <div class="col-sm-4">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="text-gray">Collateral Type</label>-->
+
+<!--                        <input class="form-control" disabled formControlName="collateralType" type="text">-->
+<!--                        <select formControlName="collateralType" class="form-control custom-select" id="collateralType" >-->
+<!--                            <option *ngFor="let record of ['Positively listed with performing facilities', 'Positive listing: performing  facilities with default history', 'Negative listing']" [value]="record">-->
+<!--                                {{record}}</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Influenced By Politics</label>
+                        <select formControlName="influencedByPolitics" class="form-control custom-select" id="influencedByPolitics" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Ethical Issues From BsActivities</label>
+
+                        <select formControlName="ethicalIssuesArisingFromBsActivities" class="form-control custom-select" id="ethicalIssuesArisingFromBsActivities" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Law Compliant</label>
+                        <select formControlName="lawCompliant" class="form-control custom-select" id="lawCompliant" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Collateral Document Approved</label>
+                        <select formControlName="isCollateralDocumentApproved" class="form-control custom-select" id="isCollateralDocumentApproved" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="text-gray">Registration Document Approved</label>
+
+                        <select formControlName="isRegistrationDocumentApproved" class="form-control custom-select" id="isRegistrationDocumentApproved" >
+                            <option *ngFor="let record of [{name: 'Yes', value: true}, {name: 'No', value: false}]" [value]="record.value">
+                                {{record.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+
+                <div *ngIf="loading" class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75"
+                         class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         style="width: 75%"></div>
+                </div>
+                <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div *ngFor="let err of errorMessages">{{err}}</div>
+                </div>
+                <div class="modal-footer">
+
+                    <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">
+                        Close
+                    </button>
+                    <button (click)="submitAdminParams()" [disabled]="!form.valid" class="btn  btn-md btn-primary"
+                            type="button">Save
+                        Record
+                    </button>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!--  <hr>-->
+        <!--  <button (click)='markInvalid()' *ngIf="userData !== 'user'" class="btn btn-danger btn-xm"><span class="fa fa-ok-circle"></span>Mark as invalid</button>-->
+        <!--  <button (click)='close()' class="btn btn-success pull-right btn-xm"><span class="fa fa-ok-circle"></span>Ok Proceed</button>-->
+        <!--  <br>-->
+    </div>

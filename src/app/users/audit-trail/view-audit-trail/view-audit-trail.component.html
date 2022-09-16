@@ -1,0 +1,29 @@
+<div class="media">
+<div *ngIf = "formData" class="media-body ml-3">
+  <div class="row">
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">Created At:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.created_at}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">Action Date:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.action_name}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">User:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.Username}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">Action:
+      </div>
+      <div class="col-8 pl-2 text-truncate">{{formData.action_name}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">IP address:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.ip_address}}</div>
+     
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">Operating System:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.os_name}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">URL PATH:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.url_path}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">URL PARAMS:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.url_params}}</div>
+      <div class="col-4 text-gray text-right pr-0 font-italic text-truncate">SESSION ID:</div>
+      <div class="col-8 pl-2 text-truncate">{{formData.session_id}}</div>
+
+
+
+  </div>
+</div>
+</div>

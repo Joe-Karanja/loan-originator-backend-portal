@@ -1,0 +1,42 @@
+<div class="row mb-1">
+    <div class="col">
+        <div class="input-group mb-3 box-shadow">
+            <div class="input-group-append col-md-offset-8">
+                        <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+                            <button class="btn btn-md btn-light" (click)="openAssessmentModal('')">+ New Assessment </button>
+                          </span>
+
+                <div aria-label="Applications Status" class="btn-group btn-group-sm" role="group">
+
+                    <button (click)="toggleStatus('submitted')" [className]="status == 'submitted' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                            id="button"
+                            routerLinkActive="active" type="button">Incomplete Assessments
+                    </button>
+
+                    <button (click)="getProcessedApplications()"
+                            class="btn btn-sm btn-primary ml-4"
+                            routerLinkActive="active" type="button">Processed Assessments
+                    </button>
+
+                    <!--                         <button id="button" type="button" [className]="status == 'verified' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"-->
+                    <!--                         (click)="toggleStatus('verified' )" routerLinkActive="active">VERIFIED</button>-->
+                    <!--                         <button id="button" type="button" [className]="status == 'rejected' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"-->
+                    <!--                         (click)="toggleStatus('rejected')"routerLinkActive="active">REJECTED</button>-->
+                    <!--                         <button id="button" type="button" [className]="status == 'approved' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"-->
+                    <!--                         (click)="toggleStatus('approved')" routerLinkActive="active">APPROVED</button>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card border-0 box-shadow" widget>
+    <div class="card-body pt-0 widget-body">
+        <div class="table-responsive table-striped table-bordered">
+            <ng2-smart-table (custom)="onCustomAction($event)"
+                             *ngIf="dataSet && isLoaded" [settings]="settings" [source]="dataSet"
+                             class="table table-hover">
+            </ng2-smart-table>
+        </div>
+    </div>
+</div>

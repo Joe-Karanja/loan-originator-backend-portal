@@ -1,0 +1,37 @@
+<div class="row" *ngIf = "premiumPerProduct">
+    
+  <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+      <div class="w-100 h-100p">
+          <ngx-charts-number-card [scheme]="motorBgColor" [textColor]="'#fff'" [innerPadding]="0"
+              [results]="motor" [valueFormatting]="infoValueFormat" [labelFormatting]="infoLabelFormat"
+              (select)="onSelect($event)">
+          </ngx-charts-number-card>
+      </div>
+  </div>
+  <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+        <div class="w-100 h-100p">
+            <ngx-charts-number-card [scheme]="personalBgColor" [textColor]="'#fff'" [innerPadding]="0"
+                [results]="personal" [valueFormatting]="infoValueFormat" [labelFormatting]="infoLabelFormat"
+                (select)="onSelect($event)">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+   <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+      <div class="w-100 h-100p">
+          <ngx-charts-number-card [scheme]="lifeBgColor" [textColor]="'#fff'" [innerPadding]="0"
+              [results]="life" [valueFormatting]="infoValueFormat" [labelFormatting]="infoLabelFormat"
+              (select)="onSelect($event)">
+          </ngx-charts-number-card>
+      </div>
+  </div>
+  <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+      <div class="w-100 h-100p">
+          <ngx-charts-number-card [scheme]="travelBgColor" [textColor]="'#fff'" [innerPadding]="0"
+              [results]="travel" [valueFormatting]="infoValueFormat" [labelFormatting]="infoLabelFormat"
+              (select)="onSelect($event)">
+          </ngx-charts-number-card>
+      </div>
+  </div>
+
+</div>
+<app-product-category-chart [activeProduct] = "activeProduct" [clickedChart] = "clickedChart"></app-product-category-chart>

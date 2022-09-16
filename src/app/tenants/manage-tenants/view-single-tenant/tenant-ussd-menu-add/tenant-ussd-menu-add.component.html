@@ -1,0 +1,196 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Field Key</label>
+        <input formControlName="field_key" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('field_key').touched && form.get('field_key').hasError('required')">Required Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="value_type">Value Type</label>
+        <select formControlName="value_type" class="form-control custom-select" id="value_type">
+          <option *ngFor="let item of value_types" [value]="item">
+            {{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Menu Value</label>
+        <input formControlName="menu_value" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('menu_value').touched && form.get('menu_value').hasError('required')">Required Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Order</label>
+        <input formControlName="order" class="form-control" type="text">
+        <small class="text-danger" *ngIf="form.get('order').touched && form.get('order').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="parent_id">Parent Menu</label>
+        <select formControlName="parent_id" class="form-control custom-select" id="parent_id">
+          <option *ngFor="let item of menus" [value]="item.id">
+            {{item.field_key}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="next_menu_id" class="text-gray"> Next Menu</label>
+        <select formControlName="next_menu_id" class="form-control custom-select" id="next_menu_id">
+          <option *ngFor="let item of menus" [value]="item.id">
+            {{item.field_key}}</option>
+        </select>
+        <small class="text-danger"
+          *ngIf="form.get('next_menu_id').touched && form.get('next_menu_id').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row pl-4">
+      <div class="col-sm-12">
+        <div class="form-group d-flex justify-content-between">
+          <div class="custom-control custom-checkbox">
+            <input formControlName="active" type="checkbox" class="custom-control-input" id="active">
+            <label class="custom-control-label" for="active">Is Active</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-4">
+      <div class="col-sm-12">
+        <div class="form-group d-flex justify-content-between">
+          <div class="custom-control custom-checkbox">
+            <input formControlName="is_dynamic" type="checkbox" class="custom-control-input" id="is_dynamic">
+            <label class="custom-control-label" for="is_dynamic">Is Dynamic</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-4">
+      <div class="col-sm-12">
+        <div class="form-group d-flex justify-content-between">
+          <div class="custom-control custom-checkbox">
+            <input formControlName="is_entry" type="checkbox" class="custom-control-input" id="is_entry">
+            <label class="custom-control-label" for="is_entry">Is Entry</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pl-4">
+      <div class="col-sm-12">
+        <div class="form-group d-flex justify-content-between">
+          <div class="custom-control custom-checkbox">
+            <input formControlName="is_registration" type="checkbox" class="custom-control-input" id="is_registration">
+            <label class="custom-control-label" for="is_registration">Is Registration</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pl-4">
+      <div class="col-sm-12">
+        <div class="form-group d-flex justify-content-between">
+          <div class="custom-control custom-checkbox">
+            <input formControlName="ends_menu" type="checkbox" class="custom-control-input" id="ends_menu">
+            <label class="custom-control-label" for="ends_menu">Ends Menu</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="service_id">Service</label>
+        <select formControlName="service_id" class="form-control custom-select" id="service_id">
+          <option *ngFor="let item of ussdServices" [value]="item.id">
+            {{item.transaction_type}}, {{item.transaction_code}} - ({{item.description}})</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4" *ngIf="formData">
+        <button class="btn btn-warning" (click) = "listLanguages()"><i class="fa fa-cogs"></i>Manage Languages</button>
+      </div>
+  </div>
+  <div class="row" *ngIf="!formData">
+    <div class=" col-sm-12">
+      <h6>Language Details</h6>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="language_id">Language</label>
+        <select formControlName="language_id" class="form-control custom-select" id="language_id">
+          <option *ngFor="let item of tenantLanguages" [value]="item.id">{{item.language}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Title Template</label>
+        <input formControlName="title_template" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('title_template').touched && form.get('title_template').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Text Template</label>
+        <input formControlName="text_template" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('text_template').touched && form.get('text_template').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Invalid Selection Message</label>
+        <input formControlName="invalid_selection_message" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('invalid_selection_message').touched && form.get('invalid_selection_message').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group d-flex justify-content-between">
+        <div class="custom-control custom-checkbox">
+          <input formControlName="is_active" type="checkbox" class="custom-control-input" id="is_active">
+          <label class="custom-control-label" for="is_active">Is Active</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="loading" class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+      aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+  </div>
+  <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div *ngFor="let err of errorMessages">{{err}}</div>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button *ngIf="!formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+      (click)="submitData()">Create Record</button>
+    <button *ngIf="formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+      (click)="saveChanges()">Save Record</button>
+
+  </div>

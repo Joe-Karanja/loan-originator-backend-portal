@@ -1,0 +1,8 @@
+version: '3.5'
+services:
+  ussd-portal:
+    image: 'dr.sqilab.com:25000/jmungai/ussd-portal:v1.0.0'
+    ports:
+    - 8080:80
+    environment:
+      SERVER_ADDRESS: 'dr.sqilab.com:8083'

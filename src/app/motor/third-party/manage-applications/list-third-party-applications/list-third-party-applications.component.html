@@ -1,0 +1,30 @@
+<div class="row mb-1">
+  <div class="col">
+    <div class="input-group mb-3 box-shadow">
+     <div class="input-group-append col-md-offset-8">
+        <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+            <button class="btn btn-md btn-primary disabled">Motor 3<sup>rd</sup> PARTY Applications </button>
+          </span>
+           
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Applications Status">
+        
+                        <button type="button" [className]="status == 'AWAITING_PAYMENT' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                         (click)="toggleStatus('AWAITING_PAYMENT')">PENDING FULL PAYMENT</button>
+                         <button type="button" [className]="status == 'FULLY_PAID' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                         (click)="toggleStatus('FULLY_PAID')">FULLY PAID / POLICY</button>
+                      
+                      </div>
+        </div>
+    </div>
+</div>
+</div>
+<div widget class="card border-0 box-shadow">
+<div class="card-body pt-0 widget-body">
+<div class="table-responsive table-striped">
+  <ng2-smart-table *ngIf="dataSet && isLoaded"
+  class="table table-hover" [settings]="settings" [source]="dataSet"
+      (custom)="onCustomAction($event)">
+  </ng2-smart-table>
+</div>
+</div>
+</div>

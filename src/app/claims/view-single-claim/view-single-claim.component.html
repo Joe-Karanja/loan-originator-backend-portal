@@ -1,0 +1,148 @@
+<div class="row">
+    <div class="col-md-4" *ngIf="application">
+      <div widget class="card border-0 box-shadow">
+        <div class="text-center pt-2" style="color: green;">
+          CLAIM INFORMATION
+        </div>
+        <div class="card-body pt-0 widget-body">
+          <table class="table-responsive">
+            <th>
+              Date of incident
+            </th>
+            <tr>
+              <td>{{application.date_of_accident | date: 'mediumDate'}}</td>
+            </tr>
+            <th>
+                Place of accident
+              </th>
+              <tr>
+                <td>{{application.place_of_accident}}</td>
+              </tr>
+            <th>
+                Has Been Reported
+              </th>
+              <tr>
+                <td>{{application.has_been_reported}}</td>
+              </tr>
+            <th>
+                Reporting Date
+              </th>
+              <tr>
+                <td>{{application.esb_timestamp | date: 'mediumDate'}}</td>
+              </tr>
+
+            <th>
+              Vehicle Registration No
+            </th>
+            <tr>
+              <td>{{application.reg_no}}</td>
+            </tr>
+            <th>
+                Policy Number
+              </th>
+              <tr>
+                <td>{{application.policy_number}}</td>
+              </tr>
+              <th>
+                  Had Casualties
+                </th>
+                <tr>
+                  <td>{{application.was_there_casualties}}</td>
+                </tr>
+
+                <th>
+                    Settlement Amount
+                  </th>
+                  <tr>
+                    <td>{{application.settlement_amount | currency: 'Kes.'}}</td>
+                  </tr>
+
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngIf="application">
+      <div widget class="card border-0 box-shadow">
+        <div class="text-center pt-2" style="color: green;">
+          COVER DETAILS
+        </div>
+        <div class="card-body pt-0 widget-body">
+          <table class="table-responsive">
+            <th>
+              Policy Is Active
+            </th>
+            <tr>
+              <td>{{application.policy_active}}</td>
+            </tr>
+            <th>
+              Policy Number
+            </th>
+            <tr>
+              <td>{{application.policy_number}}</td>
+            </tr>
+            <th>
+              Premium Amount
+            </th>
+            <tr>
+              <td>{{application.premium_amount}}</td>
+            </tr>
+            <th>
+                Cover Start Date
+              </th>
+              <tr>
+                <td>{{application.cover_start_date | date: 'mediumDate'}}</td>
+              </tr>
+              <th>
+                  Cover End Date
+                </th>
+                <tr>
+                  <td>{{application.cover_end_date | date: 'mediumDate'}}</td>
+                </tr>
+          </table>
+        </div>
+      </div>
+
+      <div widget class="card border-0 box-shadow">
+          <div class="text-center pt-2" style="color: green;">
+            UPLOADED ACCIDENT FILES
+          </div>
+          <div class="card-body pt-0 widget-body">
+            <div *ngFor = "let img of image">
+                <img src ="{{img}}"  width="100%">
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+    <div class="col-md-4" *ngIf="application && application.claim_status == 'NEW'">
+        <div class="modal-body" [formGroup]="form">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="text-gray">Settlement Amount</label>
+                        <input formControlName="settlement_amount" class="form-control" type="text">
+                        <small class="text-danger" *ngIf="form.get('settlement_amount').touched && form.get('settlement_amount').hasError('required')">Required
+                            Field</small>
+                    </div>
+                </div>
+            </div>
+          <div *ngIf="loading" class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+              aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+          </div>
+          <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div *ngFor="let err of errorMessages">{{err}}</div>
+          </div>
+          <div class="modal-footer">
+
+             <button [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary" (click)="submitData()">Proceed</button>
+
+          </div>
+    </div>
+
+  </div>
+

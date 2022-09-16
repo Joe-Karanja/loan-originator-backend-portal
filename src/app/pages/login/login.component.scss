@@ -1,0 +1,25 @@
+.login-container{
+    position: absolute;
+
+    .card{
+        background-color: #005b82 !important;
+        .card-header{
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            margin-top: -40px;
+            border-radius: 50%;
+            font-size: 36px;
+
+        }
+    }
+}
+.image-rounded{
+    border-radius: 60%;
+}
+.sign-in{
+    background-color: #111111 !important;
+}
+.transition{
+    color: #ffffff;
+}

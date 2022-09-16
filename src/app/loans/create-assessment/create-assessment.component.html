@@ -1,0 +1,418 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button (click)="closeModal()" aria-label="Close" class="close" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<mat-horizontal-stepper #stepper [formGroup]="businessApplicationForm">
+    <mat-step>
+        <div class="card">
+            <div class="card-body">
+                <ng-template matStepLabel><span class="fa fa-briefcase"></span> <span class="overall_font"> &nbsp; Business Details</span>
+                </ng-template>
+                <br>
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Business Name</label>
+                            <input class="form-control" formControlName="businessName"
+                                   placeholder="Enter Your Business Name">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Years of Operation</label>
+                            <input class="form-control" formControlName="operationYrs" placeholder="Years of Operation"
+                                   type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Category</label>
+                            <input class="form-control" formControlName="category" placeholder="Category"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Business Telephone No.</label>
+                            <input class="form-control" formControlName="tel" placeholder="Enter Your Business Tel">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Business Pin</label>
+                            <input class="form-control" formControlName="businessPin" placeholder="Business Pin"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Town</label>
+                            <input class="form-control" formControlName="town" placeholder="Enter Your Town">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Street Address</label>
+                            <input class="form-control" formControlName="street" placeholder="Enter your Street"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">PO Box</label>
+                            <input class="form-control" formControlName="poBox" placeholder="Enter your PO.Box Number"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Contact First Name</label>
+                            <input class="form-control" formControlName="contactFirstName"
+                                   placeholder="Contact First Name"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Contact Last Name</label>
+                            <input class="form-control" formControlName="contactLastName"
+                                   placeholder="Contact Last Name"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Contact Telephone Number</label>
+                            <input class="form-control" formControlName="contactTel"
+                                   placeholder="Contact Telephone Number"
+                                   type="text">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <button class="btn btn-secondary" mat-raised-button matStepperPrevious>BACK</button>
+                <button class="btn btn-danger pull-right" color="warn" mat-raised-button matStepperNext>NEXT
+                </button>
+            </div>
+        </div>
+
+    </mat-step>
+    <!-- STEP 2-->
+    <mat-step>
+        <div class="card">
+            <div class="card-body">
+                <ng-template matStepLabel><span class="fa fa-money"></span> <span class="overall_font"> &nbsp; Financial Parameters</span>
+                </ng-template>
+                <p class="words text-center mb-2">Financial Parameters</p>
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Current Liability</label>
+                            <input class="form-control" formControlName="currentLiability"
+                                   placeholder="Current Liability"
+                                   type="number">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Current Asset</label>
+                            <input class="form-control" formControlName="currentAsset" placeholder="Current Asset"
+                                   type="number">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Inventory</label>
+                            <input class="form-control" formControlName="inventory" placeholder="Inventory"
+                                   type="number">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">CapitalShares</label>
+                            <input class="form-control" formControlName="capitalShares" placeholder="Capital Shares"
+                                   type="number">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="text-gray">Business Management Experience</label>
+                        <input class="form-control" formControlName="businessManagementExperience"
+                               placeholder="Business Management Experience"
+                               type="number">
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Long Term Debt</label>
+                            <input class="form-control" formControlName="longTermDebt" placeholder="Long Term Debt"
+                                   type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Short Term Debt</label>
+                            <input class="form-control" formControlName="shortTermDebt" placeholder="Short Term Debt"
+                                   type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Capital</label>
+                            <input class="form-control" formControlName="capital" placeholder="Capital"
+                                   type="number">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Net Income</label>
+                            <input class="form-control" formControlName="netIncome" placeholder="Net Income"
+                                   type="number">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Total Assets</label>
+                            <input class="form-control" formControlName="totalAssets" placeholder="Total Assets"
+                                   type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Total Cash Inflows</label>
+                            <input class="form-control" formControlName="totalCashInflows"
+                                   placeholder="Total Cash Inflows"
+                                   type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Total Cash Outflows</label>
+                            <input class="form-control" formControlName="totalCashOutflows"
+                                   placeholder="Total Cash Outflows"
+                                   type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">Gross Earning</label>
+                            <input class="form-control" formControlName="grossEarning" placeholder="Gross Earning"
+                                   type="number">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="text-gray">ShareHolder Equity</label>
+                            <input class="form-control" formControlName="shareHolderEquity" placeholder="Shareholder Equity"
+                                   type="number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                </div>
+                <button class="btn btn-secondary" mat-raised-button matStepperPrevious>PREVIOUS</button>
+                <button class="btn btn-danger pull-right" color="warn" mat-raised-button matStepperNext>NEXT
+                </button>
+            </div>
+        </div>
+    </mat-step>
+
+    <!-- STEP 3-->
+    <mat-step>
+        <div class="card">
+            <div class="card-body">
+
+                <ng-template matStepLabel><span class="fa fa-money"></span> <span class="overall_font"> &nbsp; Other Parameters</span>
+                </ng-template>
+                <p class="words text-center mb-2">Other Parameters</p>
+
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">TurnOver Inline With Financials</label>
+
+                                <select class="form-control custom-select"
+                                        formControlName="turnOverInlineWithFinancials"
+                                        id="turnOverInlineWithFinancials">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Excesses In Account Evidenced</label>
+                                <select class="form-control custom-select" formControlName="excessesInAccountEvidenced"
+                                        id="excessesInAccountEvidenced">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">CRB Report</label>
+
+                                <select class="form-control custom-select" formControlName="crbReport" id="crbReport">
+                                    <option *ngFor="let record of [{id:0, name: 'Positively listed with performing facilities'}, {id:1, name: 'Positive listing: performing  facilities with default history'}, {id:2, name: 'Negative listing'}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Collateral Type</label>
+
+                                <select class="form-control custom-select" formControlName="collateralType"
+                                        id="collateralType">
+                                    <option *ngFor="let record of [
+                                {name: 'Cash/treasury bills', id: 0},
+                                {name: 'Property', id: 1},
+                                {name: 'Motor Vehicles', id: 2},
+                                {name: 'Debenture/Shares', id: 3},
+                                {name: 'Insurance', id: 4}
+                            ]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Influenced By Politics</label>
+                                <select class="form-control custom-select" formControlName="influencedByPolitics"
+                                        id="influencedByPolitics">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Ethical Issues From BsActivities</label>
+
+                                <select class="form-control custom-select"
+                                        formControlName="ethicalIssuesArisingFromBsActivities"
+                                        id="ethicalIssuesArisingFromBsActivities">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Law Compliant</label>
+                                <select class="form-control custom-select" formControlName="lawCompliant"
+                                        id="lawCompliant">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Loan Repayment on Schedule</label>
+                                <select class="form-control custom-select" formControlName="loanRepaymentOnSchedule"
+                                        id="loanRepaymentOnSchedule">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Incidence of Unpaid cheques</label>
+                                <select class="form-control custom-select" formControlName="incidenceOfUnpaidCheques"
+                                        id="incidenceOfUnpaidCheques" (change)="onChange($event)">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label class="text-gray">Environment Issues From Business</label>
+                                <select class="form-control custom-select"
+                                        formControlName="environmentalIssuesArisingFromBusiness"
+                                        id="environmentalIssuesArisingFromBusiness">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="text-gray">Board Meetings Evidenced</label>
+
+                                <select class="form-control custom-select"
+                                        formControlName="boardMeetingEvidenced" id="boardMeetingEvidenced">
+                                    <option *ngFor="let record of [{name: 'Yes', id: 1}, {name: 'No', id: 0}]"
+                                            [value]="record.id">
+                                        {{record.name}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="btn btn-secondary" mat-raised-button matStepperPrevious>PREVIOUS</button>
+                <button (click)="submit()" class="btn btn-danger pull-right" color="warn"
+                        mat-raised-button matStepperNext>Submit Assessment
+                </button>
+            </div>
+        </div>
+    </mat-step>
+
+
+</mat-horizontal-stepper>

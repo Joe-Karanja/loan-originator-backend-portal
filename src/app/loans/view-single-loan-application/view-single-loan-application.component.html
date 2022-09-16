@@ -1,0 +1,356 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card border-0 box-shadow" widget>
+            <div class="text-center pt-2" style="color: green;">
+                APPLICATION INFORMATION
+            </div>
+            <div class="card-body pt-0 widget-body">
+                <table class="table-responsive">
+                    <!--                    <th>-->
+                    <!--                        Application ID #-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>{{application[0].id}}</td>-->
+                    <!--                    </tr>-->
+
+                    <th>
+                        Loan Type
+                    </th>
+                    <tr>
+                        <td>{{'Salary Advance'}}</td>
+                    </tr>
+                    <th>
+                        Company Name
+
+                    </th>
+                    <tr>
+                        <td>{{'Advancys Ltd'}}</td>
+                    </tr>
+
+                    <th>
+                        Applied Amount
+                    </th>
+                    <tr>
+                        <td>{{application[0].loanAmount | currency:'Kes.'}}</td>
+                    </tr>
+                    <th>
+                        Loan Fee
+                    </th>
+                    <tr>
+                        <td>{{'Kes. 100'}}</td>
+                    </tr>
+
+                    <th>
+                        Repayment Period
+                    </th>
+                    <tr>
+                        <td>{{15}} Days(s)</td>
+                    </tr>
+                    <th>
+                        Loan Purpose
+                    </th>
+                    <tr>
+                        <td>{{'Home Improvement'}}</td>
+                    </tr>
+                    <th>
+                        Application Date
+                    </th>
+                    <tr>
+                        <td>{{'26-06-2022'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 box-shadow" widget>
+            <div class="text-center pt-2" style="color: green;">
+                APPLICANT DETAILS
+            </div>
+            <div class="card-body pt-0 widget-body pb-1 mb-1">
+                <table class="table-responsive">
+                    <p><strong>Employee Name:</strong>{{application[0].customerName}}</p>
+                    <p><strong>Phone Number:</strong> 0723909789</p>
+                    <p><strong>Staff Number:</strong> E0158</p>
+                    <p><strong>Employment Type:</strong> Permanent</p>
+                    <p><strong>Job Title:</strong> Software Developer</p>
+                    <p><strong>Current Salary:</strong> 30,000</p>
+                    <p><strong>KRA Pin:</strong> A09988923888Z</p>
+                    <p><strong>D.O.B:</strong> 3rd July 1992</p>
+                    <p><strong>National ID:</strong> 29399053</p>
+                    <!-- <td>{{application.first_name}} {{application.last_name}} {{application.middle_name}}</td> -->
+                    <!--                    <th>-->
+                    <!--                        Phone Number-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>0723909789</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.mobile_number}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        Email Address-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>njuguna.john@ekenya.co.ke</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.email_address}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        Staff Number-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>E0158</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.employee_no}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        Employment Type-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>Permanent</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.employment_type}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        Department-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>R & D</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.department}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        Job Title-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>Software Developer</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.job_title}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        Current Salary-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>30,000</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.current_salary}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        KRA Pin-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>A09988923888Z</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.kra_pin}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        D.O.B-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>3rd July 1992</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.dob}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <!--                    <th>-->
+                    <!--                        National ID-->
+                    <!--                    </th>-->
+                    <!--                    <tr>-->
+                    <!--                        <td>29399053</td>-->
+                    <!--                        &lt;!&ndash; <td>{{application.national_id}}</td> &ndash;&gt;-->
+                    <!--                    </tr>-->
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 box-shadow" widget>
+            <div class="text-center pt-2" style="color: green; font-family: monospace;">
+                MANAGE APPLICATION
+            </div>
+            <!--            <div *ngIf="application.status_desc == 'approved'" class="text-center">-->
+            <!--                <span class="badge badge-success"><i class="fa fa-check"> Approved</i></span>-->
+            <!--            </div>-->
+            <!--            <div class="card-body pt-0 widget-body">-->
+            <!--                <br>-->
+            <!--                <span *ngIf="verified" class="badge badge-info pull-right"-->
+            <!--                      style="font-family: monospace;">Verified</span>-->
+            <!--                <br>-->
+            <!--                <div>-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-sm-12">-->
+            <!--                            <div class="form-group d-flex justify-content-between">-->
+            <!--                                <div class="custom-control custom-checkbox">-->
+            <!--                                    <input [checked]="verified" [disabled]="verified" class="custom-control-input"-->
+            <!--                                           id="reg-cert"-->
+            <!--                                           type="checkbox">-->
+            <!--                                    <label class="custom-control-label" for="reg-cert">Applicant KRA pin</label>-->
+
+            <!--                                </div>-->
+            <!--                                <div>-->
+            <!--                                    <i (click)="openDocument('doc')" class="fa fa-file attachment text-primary">-->
+            <!--                                        open</i>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-sm-12">-->
+            <!--                            <div class="form-group d-flex justify-content-between">-->
+            <!--                                <div class="custom-control custom-checkbox">-->
+            <!--                                    <input [checked]="verified" [disabled]="verified" class="custom-control-input"-->
+            <!--                                           id="reg-cert"-->
+            <!--                                           type="checkbox">-->
+            <!--                                    <label class="custom-control-label" for="reg-cert">Recent Payslip</label>-->
+
+            <!--                                </div>-->
+            <!--                                <div>-->
+            <!--                                    <i (click)="openDocument('doc')" class="fa fa-file attachment text-primary">-->
+            <!--                                        open</i>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-sm-12">-->
+            <!--                            <div class="form-group d-flex justify-content-between">-->
+            <!--                                <div class="custom-control custom-checkbox">-->
+            <!--                                    <input [checked]="verified" [disabled]="verified" class="custom-control-input"-->
+            <!--                                           id="reg-cert"-->
+            <!--                                           type="checkbox">-->
+            <!--                                    <label class="custom-control-label" for="reg-cert">National ID Files</label>-->
+
+            <!--                                </div>-->
+            <!--                                <div>-->
+            <!--                                    <i (click)="openDocument('doc')" class="fa fa-file attachment text-primary">-->
+            <!--                                        open</i>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-sm-12">-->
+            <!--                            <div class="form-group d-flex justify-content-between">-->
+            <!--                                <div class="custom-control custom-checkbox">-->
+            <!--                                    <input [checked]="verified" [disabled]="verified" class="custom-control-input"-->
+            <!--                                           id="reg-cert"-->
+            <!--                                           type="checkbox">-->
+            <!--                                    <label class="custom-control-label" for="reg-cert">CRB Clearance Certificate</label>-->
+
+            <!--                                </div>-->
+            <!--                                <div>-->
+            <!--                                    <i (click)="openDocument('doc')" class="fa fa-file attachment text-primary">-->
+            <!--                                        open</i>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash; <div class="row">-->
+            <!--                  <div class="col-sm-12">-->
+            <!--                    <div class="form-group d-flex justify-content-between">-->
+            <!--                      <div class="custom-control custom-checkbox">-->
+            <!--                        <input  type="checkbox"class="custom-control-input" id="reg-cert" [checked]="verified" [disabled] = "verified">-->
+            <!--                        <label class="custom-control-label" for="reg-cert">Company Registration Certificate</label>-->
+            <!--                      </div>-->
+            <!--                      <div>-->
+            <!--                        <i (click)="openDocument('reg-cert')" class="fa fa-file attachment text-primary"> open</i>-->
+            <!--                      </div>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                </div> &ndash;&gt;-->
+            <!--                    <div class="row">-->
+            <!--                        <div class="col-sm-12">-->
+            <!--                            <div class="form-group d-flex justify-content-between">-->
+
+
+            <!--                                <div class="custom-control custom-checkbox">-->
+            <!--                                    <input [checked]="verified" [disabled]="verified" class="custom-control-input"-->
+            <!--                                           id="reg-cert"-->
+            <!--                                           type="checkbox">-->
+            <!--                                    <label class="custom-control-label" for="reg-cert">Employment letter</label>-->
+            <!--                                </div>-->
+
+            <!--                                <div>-->
+            <!--                                    <i (click)="openDocument('KRA')" class="fa fa-file attachment text-primary">-->
+            <!--                                        open</i>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash; <div class="row">-->
+            <!--                      <div class="col-sm-12">-->
+            <!--                        <div class="form-group d-flex justify-content-between">-->
+            <!--                          <div class="custom-control custom-checkbox">-->
+            <!--                            <input type="checkbox" class="custom-control-input" id="reg-cert" [checked]="verified"-->
+            <!--                              [disabled]="verified">-->
+            <!--                            <label class="custom-control-label" for="reg-cert">6 months financial statements</label>-->
+            <!--                          </div>-->
+
+            <!--                          <div>-->
+            <!--                            <i (click)="openDocument('finstate')" class="fa fa-file attachment text-primary"> open</i>-->
+            <!--                          </div>-->
+            <!--                        </div>-->
+            <!--                      </div>-->
+            <!--                    </div> &ndash;&gt;-->
+
+            <!--                    <div class="row">-->
+            <!--                        <div *ngIf="verified && !rejected && username.user_type ==='user'" class="col-sm-12">-->
+            <!--                            <div class="form-group">-->
+            <!--                                <label class="text-gray">Recommended Loan Amount(ksh)</label>-->
+            <!--                                <input class="form-control" type="number">-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div>-->
+            <!--                        </div>-->
+            <!--                        <div *ngIf="verified && !rejected && username.user_type ==='user'" class="col-sm-12">-->
+            <!--                            <div class="form-group">-->
+            <!--                                <label class="text-gray">Narration</label>-->
+            <!--                                <textarea class="form-control" type="text"></textarea>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="modal-footer">-->
+            <!--                        <button (click)="markAs('verified')" *ngIf="submitted && username.user_type !=='user'"-->
+            <!--                                class="btn  btn-sm btn-block btn-success"-->
+            <!--                                type="button"><i class="fa fa-check"></i> Mark As Verified-->
+            <!--                        </button>-->
+            <!--                        <button (click)="markAs('rejected')"-->
+            <!--                                *ngIf="submitted && username.user_type ==='user' || verified && username.user_type ==='user'" class="btn  btn-sm  btn-danger"-->
+            <!--                                type="button"><i class="fa fa-check"></i> Reject-->
+            <!--                        </button>-->
+            <!--                        <button (click)="markAs('approved')"-->
+            <!--                                *ngIf="submitted && username.user_type ==='user' || verified && username.user_type ==='user'" class="btn  btn-sm  btn-success"-->
+            <!--                                type="button"><i class="fa fa-check"></i> Approve-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <div class="row text-center mx-auto align-items-center m-2">
+                <div class="col-12">
+                    <div class="row text-center mx-auto align-items-center mt-2">
+                        <div class="col-12">
+                            <span style="font-size: 120%; font-weight: 700">Status</span>
+                            <button class="ml-2 btn btn-sm btn-light"><code>Pending Approval</code></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row text-center mx-auto align-items-center m-2">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-sm btn-success mt-2 mr-2"
+                                    type="button"><i class="fa fa-check mr-2"></i>Approve Loan
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-sm btn-danger mt-2"
+                                    type="button"><i class="fa fa-times mr-2"></i>Reject Loan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+

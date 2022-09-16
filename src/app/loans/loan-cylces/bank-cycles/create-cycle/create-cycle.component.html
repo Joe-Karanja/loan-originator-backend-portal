@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button (click)="closeModal()" aria-label="Close" class="close" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div [formGroup]="form">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="text-gray">Start Date</label>
+                            <input class="form-control" formControlName="startDate"
+                                   placeholder="Start Date">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="text-gray">End Date</label>
+                            <input class="form-control" formControlName="endDate" placeholder="End Date"
+                                   type="number">
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn btn-secondary" mat-raised-button (click)="closeModal()">CLOSE</button>
+                <button (click)="submit()" class="btn btn-danger pull-right" color="warn"
+                        mat-raised-button>Create Cycle
+                </button>
+            </div>
+        </div>
+
+</div>

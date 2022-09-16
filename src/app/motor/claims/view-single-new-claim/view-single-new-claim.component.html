@@ -1,0 +1,401 @@
+<div class="row">
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        CLAIM INFORMATION
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Date of incident
+          </th>
+          <tr>
+            <td>{{application.date_of_accident | date: 'mediumDate'}}</td>
+          </tr>
+          <th>
+            Place of accident
+          </th>
+          <tr>
+            <td>{{application.place_of_accident}}</td>
+          </tr>
+          <th>
+            Has Been Reported
+          </th>
+          <tr>
+            <td>{{application.has_been_reported}}</td>
+          </tr>
+          <th>
+            Reporting Date
+          </th>
+          <tr>
+            <td>{{application.esb_timestamp | date: 'mediumDate'}}</td>
+          </tr>
+
+          <th>
+            Vehicle Registration No
+          </th>
+          <tr>
+            <td>{{application.reg_no}}</td>
+          </tr>
+          <th>
+            Policy Number
+          </th>
+          <tr>
+            <td>{{application.policy_number}}</td>
+          </tr>
+          <th>
+            Had Casualties
+          </th>
+          <tr>
+            <td>{{application.was_there_casualties}}</td>
+          </tr>
+
+          <th>
+            Settlement Amount
+          </th>
+          <tr>
+            <td>{{application.settlement_amount | currency: 'Kes.'}}</td>
+          </tr>
+
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        COVER DETAILS
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Policy Is Active
+          </th>
+          <tr>
+            <td>{{application.policy_active}}</td>
+          </tr>
+          <th>
+            Policy Number
+          </th>
+          <tr>
+            <td>{{application.policy_number}}</td>
+          </tr>
+          <th>
+            Premium Amount
+          </th>
+          <tr>
+            <td>{{application.premium_amount}}</td>
+          </tr>
+          <th>
+            Cover Start Date
+          </th>
+          <tr>
+            <td>{{application.cover_start_date | date: 'mediumDate'}}</td>
+          </tr>
+          <th>
+            Cover End Date
+          </th>
+          <tr>
+            <td>{{application.cover_end_date | date: 'mediumDate'}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        UPLOADED ACCIDENT FILES
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <div *ngFor="let img of image">
+          <img src="{{img.path}}" width="100%">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-4" *ngIf="application">
+    <div class="modal-body" [formGroup]="form" *ngIf="application.claim_status == 'SUBMITTED'">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="staff_id">Assign Claim Associate</label>
+            <select formControlName="staff_id" class="form-control custom-select" id="staff_id">
+              <option *ngFor="let item of inspectors" [value]="item.staff_id">
+                {{item.first_name}}&nbsp;{{item.last_name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="loading" class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+      </div>
+      <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div *ngFor="let err of errorMessages">{{err}}</div>
+      </div>
+      <div class="modal-footer">
+
+        <button [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+          (click)="submitData()">Proceed</button>
+
+      </div>
+    </div>
+    <span>
+      Assigned To:&nbsp; <h3>{{application.staff_responsible_name}}</h3>
+    </span>
+    <span>
+        Selected Garage:&nbsp; <h3>{{application.repair_garage}}</h3>
+      </span>
+      <span>
+          DECISON:&nbsp; <h3>{{application.action}}</h3>
+        </span>
+        <span>
+            RESOLUTION:&nbsp; <h3>{{application.sub_action}}</h3>
+          </span>
+
+    <!--Garage Form-->
+    <div class="modal-body" [formGroup]="selectGarageForm"
+      *ngIf="application.claim_status == 'ACKNOWLEDGED' && !application.repair_garage">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="garage_id">Select Garage</label>
+            <select formControlName="garage_id" class="form-control custom-select" id="garage_id">
+              <option *ngFor="let item of garages" [value]="item.garage_id">{{item.garage_name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="loading" class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+      </div>
+      <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div *ngFor="let err of errorMessages">{{err}}</div>
+      </div>
+      <div class="modal-footer">
+
+        <button [disabled]="!form.valid" *ngIf="application.claim_status == 'SUBMITTED'" type="button"
+          class="btn  btn-md btn-primary" (click)="submitData()">Proceed</button>
+        <button [disabled]="!selectGarageForm.valid" *ngIf="application.claim_status == 'ACKNOWLEDGED'" type="button"
+          class="btn  btn-md btn-primary" (click)="assignGarage()">Proceed</button>
+      </div>
+    </div>
+
+    <!-- Assessment Form -->
+    <div class="modal-body" [formGroup]="assessmentForm"
+      *ngIf="application.claim_status == 'ACKNOWLEDGED' && application.repair_garage">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="action">Select Action</label>
+            <select formControlName="action" class="form-control custom-select" id="action" (change)="actionChanged(assessmentForm.value.action)">
+              <option value="DENIED">Deny Request</option>
+              <option value="ACCEPTED">Accept Request</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-12" >
+            <div class="form-group">
+              <label for="sub_action">Repair/Constructive Loss</label>
+              <select formControlName="sub_action" class="form-control custom-select" id="sub_action" >
+                <option value="REPAIR">Repair</option>
+                <option value="CONSTRUCTIVE_TOTAL_LOSS">Constructive Total Loss</option>
+              </select>
+            </div>
+          </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label class="text-gray">Narration</label>
+            <textarea formControlName="narration" class="form-control" cols="3"></textarea>
+
+            <small class="text-danger"
+              *ngIf="assessmentForm.get('narration').touched && assessmentForm.get('narration').hasError('required')">Required
+              Field</small>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div class="input-group file-upload">
+                    <input type="file"   class="file-upload-btn"/>
+                    <input type="text" class="form-control" placeholder="Choose a file..." >
+                    <span class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div *ngIf="loading" class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+      </div>
+      <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div *ngFor="let err of errorMessages">{{err}}</div>
+      </div>
+      <div class="modal-footer">
+
+        <button [disabled]="!form.valid" *ngIf="application.claim_status == 'SUBMITTED'" type="button"
+          class="btn  btn-md btn-primary" (click)="submitData()">Proceed</button>
+        <button [disabled]="!assessmentForm.valid" *ngIf="application.claim_status == 'ACKNOWLEDGED'" type="button"
+          class="btn  btn-md btn-primary" (click)="submitReport()">Submit Assessment Report</button>
+
+      </div>
+    </div>
+     <!-- Mark as repaired Form -->
+    <button
+    *ngIf="application.claim_status == 'PASSED_ASSESSMENT'
+    && application.action == 'ACCEPTED'  && application.sub_action == 'REPAIR' "
+          class="btn  btn-md btn-primary"  type="button" (click)="markAsRepaired()">Mark as repaired</button>
+
+            <!-- Invoice Form -->
+    <div class="modal-body" [formGroup]="invoiceForm" *ngIf="application.claim_status == 'REPAIRED'">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="form-group">
+              <label class="text-gray">Invoice Number #</label>
+              <input formControlName="invoice_no" class="form-control" type="text">
+              <small class="text-danger"
+                *ngIf="invoiceForm.get('invoice_no').touched && invoiceForm.get('invoice_no').hasError('required')">Required
+                Field</small>
+            </div>
+          </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label class="text-gray">Invoice Amount</label>
+          <input formControlName="invoice_amount" class="form-control" type="number">
+          <small class="text-danger"
+            *ngIf="invoiceForm.get('invoice_amount').touched && invoiceForm.get('invoice_amount').hasError('required')">Required
+            Field</small>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="loading" class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+    <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div *ngFor="let err of errorMessages">{{err}}</div>
+    </div>
+    <div class="modal-footer">
+
+      <button [disabled]="!invoiceForm.valid"  type="button"
+        class="btn  btn-md btn-primary" (click)="submitInvoice()">Submit Invoice</button>
+
+    </div>
+  </div>
+
+         <!-- Make Payment Form -->
+         <div class="modal-body" *ngIf="application.claim_status == 'INVOICED'">
+
+
+                    INVOICE NUMBER:&nbsp; <h3>{{application.invoice_no }}</h3>
+
+                      INVOICE AMOUNT:&nbsp; <h3>{{application.invoice_amount | currency : 'Kes.'}}</h3>
+
+
+            <div *ngIf="loading" class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            </div>
+            <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+              <div *ngFor="let err of errorMessages">{{err}}</div>
+            </div>
+            <div class="modal-footer">
+
+              <button  type="button"
+                class="btn  btn-md btn-primary" (click)="markAsPaid()">Make payment
+              </button>
+
+            </div>
+          </div>
+          <!-- COMPLETE Form -->
+         <div class="modal-body" *ngIf="application.claim_status == 'COMPLETE'">
+
+
+            INVOICE NUMBER:&nbsp; <h3>{{application.invoice_no }}</h3>
+
+              INVOICE AMOUNT:&nbsp; <h3>{{application.invoice_amount | currency : 'Kes.'}}</h3>
+
+
+              <button  type="button"
+              class="btn  btn-md btn-success disabled" > CLAIM IS SETTLED <i class="fa fa-check"></i>
+            </button>
+    <div *ngIf="loading" class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+    <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div *ngFor="let err of errorMessages">{{err}}</div>
+    </div>
+    <div class="modal-footer">
+
+
+    </div>
+  </div>
+        </div>
+
+
+
+<!-- client_claim_id: 21
+channel: "OB185001"
+mobile_number: "254727110843"
+policy_number: "65E8B3A6-81E"
+reg_no: "KCD455P"
+date_of_accident: "2019-08-08"
+place_of_accident: "Nairobi"
+nature_of_accident: "Minor"
+description: "Head on Collision"
+has_been_reported: "Y"
+location_of_police_station: "Central"
+obstruct_no: "OB185001"
+was_there_casualties: "Y"
+no_casualties: "1"
+claim_status: "PASSED_ASSESSMENT"
+status_description: "To be repaired"
+esb_timestamp: "2019-09-11T14:15:04Z"
+driver_name: "David Njuguna"
+driver_licence_no: "DF0889G"
+driver_occupation: "Driver"
+driver_phone: "0721580569"
+driver_allowed_to_drive: "true"
+driver_license_no: null
+driver_policy_no: "DF0889G"
+is_car_insured: "is_car_insured"
+damage: null
+repair_garage: "Davi Ga"
+repairer_tel_no: "0725445566"
+repairer_invoice: "50860"
+op_owner_name: "null"
+op_phone: "null"
+op_rship: "null"
+op_car_reg_no: "null"
+op_insurer: "null"
+op_damaged_property: "null"
+witness_name: "null"
+witness_phone: "null"
+settlement_amount: 70000
+image_string: "[{"image":"\\claim\\EE819D5E-7230.jpg"},{"image":"\\claim\\0A5DAD3A-7DA1.jpg"}]"
+responsible_staff_id: 3
+staff_responsible_name: "Benard Cheress"
+police_absract_check: 0
+inspection_check: 1
+medical_check: 1
+image_check: 0
+inspection_comment: "fdfdf"
+comment: null
+action: "ACCEPTED"
+sub_action: "REPAIR"
+registered_in_cbs: 1
+valid_claim: 1
+garage_id: 4
+expected_premium: 0
+paid_premium: 0
+is_premium_paid_full: null -->

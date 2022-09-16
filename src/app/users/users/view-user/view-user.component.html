@@ -1,0 +1,197 @@
+<mat-card class="course-card mat-elevation-z7 text-center">
+
+    <mat-card-header>
+
+<!--        <mat-card-title class="text-center">User Details</mat-card-title>-->
+
+        <!--        <button type="button" class="close" aria-label="Close">-->
+        <!--            <span aria-hidden="true">&times;</span>-->
+        <!--        </button>-->
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <h3 class="text-center m-2" style="font-weight: 700; font-size: 120%">User Details</h3>
+        <hr>
+
+        <table class="table-responsive">
+            <p><strong>User Name: </strong> {{ formData.first_name + ' ' + formData.middle_name + ' ' + formData.last_name }}</p>
+            <p><strong>Phone Number: </strong> {{formData.mobile_number}}</p>
+            <p><strong>Email: </strong>{{formData.email_address}}</p>
+            <p><strong>Role: </strong>Admin</p>
+            <p><strong>Date Created: </strong> {{'22nd June 2022'}}</p>
+        </table>
+    </mat-card-content>
+
+
+    <mat-card-actions class="m2 text-center">
+
+        <button class="btn btn-primary btn-sm mr-5" color="primary" mat-raised-button (click)="editUser(formData)">
+            Edit User
+        </button>
+
+        <button class="btn btn-danger btn-sm" color="accent" mat-raised-button>
+            Disable User
+        </button>
+
+    </mat-card-actions>
+
+
+</mat-card>
+
+
+<!--<div class="row">-->
+<!--  <div class="col-md-4">-->
+<!--    <div class="card border-0 box-shadow" widget>-->
+<!--      <div class="text-center pt-2" style="color: green;">-->
+<!--        USER INFORMATION-->
+<!--      </div>-->
+<!--      <div class="card-body pt-0 widget-body">-->
+<!--        <table class="table-responsive">-->
+<!--          <th>-->
+<!--            Application ID #-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+
+<!--          <th>-->
+<!--            Loan Type-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+<!--          <th>-->
+<!--            Applied Amount-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+<!--          <th>-->
+<!--            Loan Fee-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+
+<!--          <th>-->
+<!--            Repayment Period-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td> Month(s)</td>-->
+<!--          </tr>-->
+<!--          <th>-->
+<!--            Loan Purpose-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+<!--          <th>-->
+<!--            Application Date-->
+<!--          </th>-->
+<!--          <tr>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="col-md-4">-->
+<!--    <div class="card border-0 box-shadow" widget>-->
+<!--      <div class="text-center pt-2" style="color: green;">-->
+<!--        APPLICANT DETAILS-->
+<!--      </div>-->
+<!--      <div class="card-body pt-0 widget-body pb-1 mb-1">-->
+<!--        <table class="table-responsive">-->
+<!--          <p><strong>Employee Name:</strong> John Njoroge N</p>-->
+<!--          <p><strong>Phone Number:</strong> 0723909789</p>-->
+<!--          <p><strong>Staff Number:</strong> E0158</p>-->
+<!--          <p><strong>Employment Type:</strong> Permanent</p>-->
+<!--          <p><strong>Job Title:</strong> Software Developer</p>-->
+<!--          <p><strong>Current Salary:</strong> 30,000</p>-->
+<!--          <p><strong>KRA Pin:</strong> A09988923888Z</p>-->
+<!--          <p><strong>D.O.B:</strong> 3rd July 1992</p>-->
+<!--          <p><strong>National ID:</strong> 29399053</p>-->
+<!--          &lt;!&ndash; <td>{{application.first_name}} {{application.last_name}} {{application.middle_name}}</td> &ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Phone Number&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>0723909789</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.mobile_number}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Email Address&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>njuguna.john@ekenya.co.ke</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.email_address}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Staff Number&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>E0158</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.employee_no}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Employment Type&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>Permanent</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.employment_type}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Department&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>R & D</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.department}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Job Title&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>Software Developer</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.job_title}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        Current Salary&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>30,000</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.current_salary}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        KRA Pin&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>A09988923888Z</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.kra_pin}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        D.O.B&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>3rd July 1992</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.dob}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        National ID&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </th>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        <td>29399053</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;                        &lt;!&ndash; <td>{{application.national_id}}</td> &ndash;&gt;&ndash;&gt;-->
+<!--          &lt;!&ndash;                    </tr>&ndash;&gt;-->
+
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+
+<!--</div>-->
+

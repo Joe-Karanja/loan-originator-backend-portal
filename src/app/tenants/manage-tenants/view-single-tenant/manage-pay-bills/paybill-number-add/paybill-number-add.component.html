@@ -1,0 +1,143 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Short Code 1</label>
+        <input formControlName="short_code_1" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('short_code_1').touched && form.get('short_code_1').hasError('required')">Required Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Short Code 2</label>
+        <input formControlName="short_code_2" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('short_code_2').touched && form.get('short_code_2').hasError('required')">Required Field</small>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Checkout Code</label>
+        <input formControlName="checkout_code" class="form-control" type="text">
+        <small class="text-danger" *ngIf="form.get('checkout_code').touched && form.get('checkout_code').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Checkout Pass Key</label>
+        <input formControlName="checkout_pass_key" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('checkout_pass_key').touched && form.get('checkout_pass_key').hasError('required')">Required Field</small>
+      </div>
+    </div>
+
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Initiator Name</label>
+        <input formControlName="initiator_name" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('initiator_name').touched && form.get('initiator_name').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Initiator Password</label>
+        <input formControlName="initiator_password" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('initiator_password').touched && form.get('initiator_password').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Bill Consumer Key</label>
+        <input formControlName="bill_consumer_key" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('bill_consumer_key').touched && form.get('bill_consumer_key').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Bill Consumer Secret</label>
+        <input formControlName="bill_consumer_secret" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('bill_consumer_secret').touched && form.get('bill_consumer_secret').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Offline Confirmation Action</label>
+        <input formControlName="offline_confirmation_action" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('offline_confirmation_action').touched && form.get('offline_confirmation_action').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Test MSISDN</label>
+        <input formControlName="test_msisdn" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('test_msisdn').touched && form.get('test_msisdn').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="row pl-4">
+      <div class="col-sm-12">
+        <div class="form-group d-flex justify-content-between">
+          <div class="custom-control custom-checkbox">
+            <input formControlName="active" type="checkbox" class="custom-control-input" id="active">
+            <label class="custom-control-label" for="active">Is Active</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="row pl-4">
+        <div class="col-sm-12">
+          <div class="form-group d-flex justify-content-between">
+            <div class="custom-control custom-checkbox">
+              <input formControlName="is_test" type="checkbox" class="custom-control-input" id="is_test">
+              <label class="custom-control-label" for="is_test">Is Test</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div *ngIf="loading" class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+      aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+  </div>
+  <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div *ngFor="let err of errorMessages">{{err}}</div>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button *ngIf="!formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+      (click)="submitData()">Create Record</button>
+    <button *ngIf="formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+      (click)="saveChanges()">Save Record</button>
+
+  </div>

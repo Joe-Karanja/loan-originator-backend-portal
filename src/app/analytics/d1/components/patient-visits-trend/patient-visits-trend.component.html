@@ -1,0 +1,15 @@
+<div *ngIf="isLoaded && graphData && selectedApplication" widget class="card border-0 box-shadow col-md-12">
+    <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0 text-center">Applications for cover policies</h5>
+        <div class="widget-controls"> 
+        </div>        
+    </div>
+  <div class="card-body pt-0 widget-body">
+    <ngx-charts-bar-vertical  [view]="view" [scheme]="colorScheme" [results]="graphData"
+      [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+    <!-- [scheme]="colorScheme" -->
+  </div>
+</div>

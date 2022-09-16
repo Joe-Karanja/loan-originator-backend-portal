@@ -1,0 +1,174 @@
+<div class="row">
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        APPLICATION INFORMATION
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Applicant
+          </th>
+          <tr>
+            <td>{{application.full_name}}</td>
+          </tr>
+          <th>
+            Phone Number
+          </th>
+          <tr>
+            <td>{{application.mobile_number}}</td>
+          </tr>
+          <th>
+            Email Address
+          </th>
+          <tr>
+            <td>{{application.email_address}}</td>
+          </tr>
+          <th>
+            <h6 class="text-center"> Vehicle Details</h6>
+          </th>
+          <tr>
+            <td></td>
+          </tr>
+
+          <th>
+            Vehicle Registration No
+          </th>
+          <tr>
+            <td>{{application.car_reg_no}}</td>
+          </tr>
+          <th>
+            Type Of Vehicle
+          </th>
+          <tr>
+            <td>{{application.type_of_vehicle}}</td>
+          </tr>
+          <th>
+            No. of passengers
+          </th>
+          <tr>
+            <td>{{application.number_of_passengers}}</td>
+          </tr>
+          <th>
+            Year Of Manufacture
+          </th>
+          <tr>
+            <td>{{application.yom}}</td>
+          </tr>
+
+          <th>
+            <h6 class="text-center"> Application Details</h6>
+          </th>
+          <tr>
+            <td></td>
+          </tr>
+          <th>
+            Valuation Status
+          </th>
+          <tr>
+            <td>{{application.valuation_status}}</td>
+          </tr>
+          <th>
+            Valuation Amount
+          </th>
+          <tr>
+            <td>{{application.valuation_amount | currency: 'Kes.'}}</td>
+          </tr>
+
+          <th>
+            Created On
+          </th>
+          <tr>
+            <td>{{application.esb_timestamp | date: "mediumDate"}}</td>
+          </tr>
+
+
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        COVER DETAILS
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Policy Is Active
+          </th>
+          <tr>
+            <td>{{application.policy_active}}</td>
+          </tr>
+          <th>
+            Policy Number
+          </th>
+          <tr>
+            <td>{{application.policy_number}}</td>
+          </tr>
+          <th>
+            Premium Amount (4% of valauation)
+          </th>
+          <tr>
+            <td>{{application.premium_amount}}</td>
+          </tr>
+          <th>
+            Cover Start Date
+          </th>
+          <tr>
+            <td>{{application.cover_start_date | date: 'mediumDate'}}</td>
+          </tr>
+          <th>
+            Cover End Date
+          </th>
+          <tr>
+            <td>{{application.cover_end_date | date: 'mediumDate'}}</td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-4" *ngIf="application">
+
+      <div widget class="card border-0 box-shadow">
+          <div class="text-center pt-2" style="color: green;">
+            BENEFITS
+          </div>
+          <div class="card-body pt-0 widget-body">
+            <table class="table table-responsive table-striped">
+              <tr>
+                <th>
+                  Benefit Name
+                </th>
+                <th>
+                  Value
+                </th>
+              </tr>
+              <tbody>
+                <tr *ngFor = "let benefit of benefits">
+                  <td>{{benefit.benefit_name}}</td>
+                  <td>{{benefit.benefit_amount | currency: 'Kes.'}}</td>
+                </tr>
+              </tbody>
+
+
+            </table>
+          </div>
+        </div>
+
+  </div>

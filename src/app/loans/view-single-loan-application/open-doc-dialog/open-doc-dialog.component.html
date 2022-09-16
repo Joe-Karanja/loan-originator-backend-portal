@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" *ngIf="docData === 'finstate'">
+      <img src="/assets/img/reg-cert.jfif" alt="">
+    </div>
+  
+   
+  </div>
+  <div class="row">
+    <div class="col-md-12"  *ngIf="docData === 'doc' ">
+      <img src="/assets/img/cert2.png" alt="">
+    </div>
+  
+   
+  </div>
+  <div class="row">
+    <div class="col-md-12"  *ngIf="docData === 'KRA'">
+     
+        <img src="/assets/img/kra_cert.jfif" alt="">
+      </div>
+     
+   
+   
+  </div>
+  <hr>
+  <button (click)='markInvalid()' *ngIf="userData !== 'user'" class="btn btn-danger btn-xm"><span class="fa fa-ok-circle"></span>Mark as invalid</button>
+  <button (click)='close()' class="btn btn-success pull-right btn-xm"><span class="fa fa-ok-circle"></span>Ok Proceed</button>
+  <br>
+</div>

@@ -1,0 +1,77 @@
+
+<div class="modal-header">
+        <h4 class="modal-title">{{title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" [formGroup]="form">
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label class="text-gray">Service ID</label>
+                      <input formControlName="service_id" class="form-control" type="text">
+                      <small class="text-danger" *ngIf="form.get('service_id').touched && form.get('service_id').hasError('required')">Required
+                          Field</small>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="text-gray">Response CODE</label>
+                    <input formControlName="response_code" class="form-control" type="text">
+                    <small class="text-danger" *ngIf="form.get('response_code').touched && form.get('response_code').hasError('required')">Required
+                        Field</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="text-gray">NotificationT Template</label>
+                        <textarea rows = "4" formControlName="message_template" class="form-control" type="text"></textarea>
+                        <small class="text-danger" *ngIf="form.get('message_template').touched && form.get('message_template').hasError('required')">Required
+                            Field</small>
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="row">
+                <div class="col-sm-12">
+                            <ckeditor
+                            [(ngModel)]="ckeditorContent",
+                             [config]="config"
+                            (change)="onChange($event)"
+                            (ready)="onReady($event)"
+                            (focus)="onFocus($event)"
+                            (blur)="onBlur($event)"
+                            debounce="500">
+                            </ckeditor>
+                </div>
+            </div> -->
+            <div class="row pl-4">
+                <div class="col-sm-12">
+                  <div class="form-group d-flex justify-content-between">
+                    <div class="custom-control custom-checkbox">
+                      <input formControlName="enabled" type="checkbox" class="custom-control-input" id="enabled">
+                      <label class="custom-control-label" for="enabled">Is Enabled</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <div *ngIf="loading" class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>
+        <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <div *ngFor="let err of errorMessages">{{err}}</div>
+        </div>
+        <div class="modal-footer">
+      
+          <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+          <button *ngIf = "!formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary" (click)="submitData()">Create Record</button>
+          <button *ngIf = "formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary" (click)="saveChanges()">Save Record</button>
+      
+        </div>

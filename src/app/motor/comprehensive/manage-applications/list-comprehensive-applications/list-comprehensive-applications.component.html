@@ -1,0 +1,44 @@
+<div class="row mb-1">
+  <div class="col">
+      <div class="input-group mb-3 box-shadow">
+       <div class="input-group-append col-md-offset-8">
+          <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+              <button class="btn btn-md btn-primary disabled">Motor Comprehensive Applications </button>
+            </span>
+              <!-- <span  (click)="openModal(null)" class="input-group-text border-top-0 border-right-0 border-bottom-0">
+
+              <button class="btn btn-md btn-success">Add Application</button></span> -->
+              <!-- <span   class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                      class="fa fa-th"></i></span>
+              <span   class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                      class="fa fa-list"></i></span> -->
+
+                      <div class="btn-group btn-group-sm" role="group" aria-label="Applications Status">
+          
+                          <button type="button" [className]="status == 'PENDING_VALUATION' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                           (click)="toggleStatus('PENDING_VALUATION')">PENDING VALUATION PAYMENT</button>
+                           <button type="button" [className]="status == 'FORWARDED_TO_VALUER' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                           (click)="toggleStatus('FORWARDED_TO_VALUER')">IN VALUATION</button>
+                          <button type="button" [className]="status == 'VALUED' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                           (click)="toggleStatus('VALUED')">VALUED</button>
+                          <button type="button"  [className]="status == 'COMPLETED' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-default'"
+                          (click)="toggleStatus('COMPLETED')">COMPLETED/POLICY</button>
+                        </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="alert alert-success" role="alert">
+    Showing applications that are in status: {{status}}
+  </div>
+
+<div widget class="card border-0 box-shadow">
+<div class="card-body pt-0 widget-body">
+<div class="table-responsive table-striped">
+  <ng2-smart-table *ngIf="dataSet && isLoaded"
+  class="table table-hover" [settings]="settings" [source]="dataSet"
+      (custom)="onCustomAction($event)">
+  </ng2-smart-table>
+</div>
+</div>
+</div>

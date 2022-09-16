@@ -1,0 +1,56 @@
+<div class="row mb-1">
+    <div class="col-4">
+        <button class="btn btn-danger btn-sm" style="font-weight: 600" routerLink="/loans/bank/cycles"><i class="fa fa-back"></i>Back </button>
+    </div>
+
+    <div class="col-4 text-center">
+<!--        <div class="form-group text-center">-->
+<!--            <label class="text-gray text-center">Select Cycle</label>-->
+<!--            <input (ngModelChange)="getDate($event)" [(ngModel)]="queryDate" autocomplete="off" [bsConfig]="{containerClass: 'theme-dark-blue', isAnimated: true, rangeInputFormat : 'MMMM Do YYYY', dateInputFormat: 'MMMM Do YYYY,', showWeekNumbers: false}" bsDaterangepicker-->
+<!--                   class="form-control text-center" name="queryDate"-->
+<!--                   placeholder="Select Date Range"-->
+<!--                   type="text">-->
+<!--        </div>-->
+    </div>
+
+    <div class="col-4">
+        <div class=" float-right pull-right">
+            <button (click)="exportReport('')" class="btn btn-success btn-sm m-2" routerLinkActive="active" type="button">
+                <i class="fa fa-download fa-lg"></i> Export
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="card border-0 box-shadow mt-4" widget>
+    <div class="card-body pt-0 widget-body">
+        <div class="table-responsive table-striped table-bordered mt-2">
+            <ng2-smart-table (custom)="onCustomAction($event)"
+                             *ngIf="dataSet && isLoaded" [settings]="settings" [source]="dataSet"
+                             class="table table-hover">
+            </ng2-smart-table>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 box-shadow mt-4 mb-2" widget>
+    <div class="card-body pt-0 pb-0 widget-body mt-2 mb-0 text-right">
+
+        <div class="row text-center">
+            <div class="col-4"></div>
+            <div class="col-4">
+<!--                <h4 style="font-weight: 600">Total Loans: 3</h4>-->
+<!--                <h4 style="font-weight: 600">Total Amount Kes.21,000</h4>-->
+
+            </div>
+            <div class="col-4 mt-2 mb-2 text-right pull-right">
+<!--                <button class="btn btn-danger align-middle"><i class="fa fa-times"></i> Close Cycle</button>-->
+                <h6 style="font-weight: 600">Total Loans: {{totalLoans}}</h6>
+                <h6 style="font-weight: 600">Total Amount Kes.{{totalAmount}}</h6>
+                <h6 style="font-weight: 600; display: inline-block">Status: {{'pending payment' | titlecase}} &nbsp;&nbsp;&nbsp;</h6>
+                <button class="btn btn-primary btn-sm align-middle" (click)="openModal(null)"><i class="fa fa-check"></i>  Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+</div>

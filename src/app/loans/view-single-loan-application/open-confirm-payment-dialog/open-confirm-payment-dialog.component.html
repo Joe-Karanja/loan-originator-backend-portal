@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div [formGroup]="form" class="modal-body">
+            <div class="row">
+
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="text-gray">Select Means of Payment</label>
+                        <select
+                                class="form-control"
+                                formControlName="paymentMode"
+                                id="paymentMode"
+                                name="paymentMode"
+                        >
+                            <option *ngFor="let item of [{id: 'Cheque'}, {id: 'Swift'},  {id: 'EFT'}]"
+                                    [value]="item.id"
+                            >{{ item.id}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="text-gray">Transaction Number</label>
+                        <input class="form-control" formControlName="transactionNumber" type="text">
+                        <small *ngIf="form.get('transactionNumber').touched && form.get('transactionNumber').hasError('required')"
+                               class="text-danger">Required
+                            Field</small>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="text-gray"></label>
+                        <textarea class="form-control" cols="50" formControlName="recommendation" rows="4" type="text">
+                            </textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div *ngFor="let err of errorMessages">{{err}}</div>
+            </div>
+            <div class="modal-footer">
+
+                <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">
+                    Close
+                </button>
+                <button (click)="submitData()" [disabled]="!form.valid" class="btn  btn-md btn-primary"
+                        type="button">Confirm Payment
+                </button>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!--  <hr>-->
+    <!--  <button (click)='markInvalid()' *ngIf="userData !== 'user'" class="btn btn-danger btn-xm"><span class="fa fa-ok-circle"></span>Mark as invalid</button>-->
+    <!--  <button (click)='close()' class="btn btn-success pull-right btn-xm"><span class="fa fa-ok-circle"></span>Ok Proceed</button>-->
+    <!--  <br>-->
+</div>

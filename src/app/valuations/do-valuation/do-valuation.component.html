@@ -1,0 +1,376 @@
+<div class="row">
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Applicant
+          </th>
+          <tr>
+            <td>{{application.customer_name}}</td>
+          </tr>
+          <th>
+            Phone Number
+          </th>
+          <tr>
+            <td>{{application.customer_mobile_number}}</td>
+          </tr>
+          <th>
+            Email Address
+          </th>
+          <tr>
+            <td>{{application.customer_email_address}}</td>
+          </tr>
+          <th>
+            <h6 class="text-center"> Vehicle Details</h6>
+          </th>
+          <tr>
+            <td></td>
+          </tr>
+
+          <th>
+            Vehicle Registration No
+          </th>
+          <tr>
+            <td>{{application.reg_no}}</td>
+          </tr>
+          <!-- <th>
+            Type Of Vehicle
+          </th>
+          <tr>
+            <td>{{application.type_of_vehicle}}</td>
+          </tr>
+          <th>
+            No. of passengers
+          </th>
+          <tr>
+            <td>{{application.number_of_passengers}}</td>
+          </tr>
+          <th>
+            Year Of Manufacture
+          </th>
+          <tr>
+            <td>{{application.yom}}</td>
+          </tr> -->
+
+          <th>
+            <h6 class="text-center"> Valuation Details</h6>
+          </th>
+          <tr>
+            <td></td>
+          </tr>
+          <th>
+            Valuation Status
+          </th>
+          <tr>
+            <td>{{application.valuation_status}}</td>
+          </tr>
+          <!-- <th>
+            Valuation Amount
+          </th>
+          <tr>
+            <td>{{application.valuation_amount | currency: 'kes'}}</td>
+          </tr> -->
+
+          <th>
+            Created On
+          </th>
+          <tr>
+            <td>{{application.esb_timestamp | date: "mediumDate"}}</td>
+          </tr>
+
+
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Valuation for: {{application.reg_no}}</h5>
+        <div class="widget-controls">
+          <button class="btn btn-success" (click)="submitData()" [disabled]="!form.valid">Submit Valuation Report</button>
+        </div>
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <div [formGroup]="form">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Corporate Reference Number</label>
+                <input formControlName="corporate_ref_no" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('corporate_ref_no').touched && form.get('corporate_ref_no').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <h6 class="col-sm-12">Inspection Details</h6>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Examiner Name</label>
+                <input formControlName="examiner" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('examiner').touched && form.get('examiner').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Location of inspection</label>
+                <input formControlName="location_of_inspection" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('location_of_inspection').touched && form.get('location_of_inspection').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Date of inspection</label>
+                <input formControlName="date_of_inspection"  placeholder="yyyy-mm-dd"
+                class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('date_of_inspection').touched && form.get('date_of_inspection').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">General Condition</label>
+                <input formControlName="general_condition" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('general_condition').touched && form.get('general_condition').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Assessed Value</label>
+                <input formControlName="assessed_value" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('assessed_value').touched && form.get('assessed_value').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Windscreen Value</label>
+                <input formControlName="note_value" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('note_value').touched && form.get('note_value').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <h6 class="col-sm-12">Vehicle Details</h6>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Date of registration</label>
+                <input formControlName="date_of_reg" class="form-control" 
+                placeholder="yyyy-mm-dd" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('date_of_reg').touched && form.get('date_of_reg').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Serial No</label>
+                <input formControlName="serial_no" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('serial_no').touched && form.get('serial_no').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Car Type</label>
+                <input formControlName="car_type" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('car_type').touched && form.get('car_type').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Car Type</label>
+                <input formControlName="car_type" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('car_type').touched && form.get('car_type').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Make</label>
+                <input formControlName="make" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('make').touched && form.get('make').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Year of Manufacture</label>
+                <input formControlName="yom" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('yom').touched && form.get('yom').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Make</label>
+                <input formControlName="make" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('make').touched && form.get('make').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Color</label>
+                <input formControlName="color" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('color').touched && form.get('color').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Engine No</label>
+                <input formControlName="engine_no" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('engine_no').touched && form.get('engine_no').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Engine Rating</label>
+                <input formControlName="engine_rating" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('engine_rating').touched && form.get('engine_rating').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Fuel Type</label>
+                <input formControlName="fuel_type" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('fuel_type').touched && form.get('fuel_type').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Engine Rating</label>
+                <input formControlName="engine_rating" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('engine_rating').touched && form.get('engine_rating').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Odometer Reading</label>
+                <input formControlName="odometer_reading" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('odometer_reading').touched && form.get('odometer_reading').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Chasis Number</label>
+                <input formControlName="chasis_no" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('chasis_no').touched && form.get('chasis_no').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Tyres Type</label>
+                <input formControlName="tyres" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('tyres').touched && form.get('tyres').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Coach Work</label>
+                <input formControlName="coach_work" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('coach_work').touched && form.get('coach_work').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Mechanical</label>
+                <input formControlName="mechanical" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('mechanical').touched && form.get('mechanical').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Electrical</label>
+                <input formControlName="electrical" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('electrical').touched && form.get('electrical').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="text-gray">Anti Theft</label>
+                <input formControlName="anti_theft" class="form-control" type="text">
+                <small class="text-danger"
+                  *ngIf="form.get('anti_theft').touched && form.get('anti_theft').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+
+
+
+          </div>
+
+          <div class="row">
+            <h6 class="col-sm-12">Attachments</h6>
+             <h6>&nbsp;Valuation Report(pdf,doc, xls)</h6> 
+            <input type="file" (change)="fileChange(input)" #input class="img-upload-btn"/>
+
+            <button class="btn btn-info rounded-0" type="button">
+                 <span *ngIf="!image"><i class="fa fa-upload"></i> Select File... </span>
+                 <span *ngIf="image"><i class="fa fa-refresh"></i> Change File... </span>
+            </button>
+            
+            <div class="image-wrapper">
+                <i *ngIf="image" class="fa fa-times delete-img" (click)="removeImage()"></i>
+                <!-- <img [attr.src]="image" *ngIf="image" width="100%">
+                <img src="assets/img/app/no-image.png" *ngIf="!image" width="100%"> -->
+            </div>
+            
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

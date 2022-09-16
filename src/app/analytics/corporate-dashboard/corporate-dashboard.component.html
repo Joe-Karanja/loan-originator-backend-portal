@@ -1,0 +1,137 @@
+<!--Filter by duration-->
+<div class="row">
+    <div class="col-4 text-center mx-auto">
+        <div class="form-group text-center">
+            <label class="text-gray text-center">Select Period</label>
+            <input (ngModelChange)="getDate($event)" [(ngModel)]="queryDate" [bsConfig]="{containerClass: 'theme-dark-blue', isAnimated: true, rangeInputFormat : 'MMMM Do YYYY', dateInputFormat: 'MMMM Do YYYY,', showWeekNumbers: false}" autocomplete="off"
+                   autocomplete="off"
+                   bsDaterangepicker
+                   class="form-control text-center" name="queryDate"
+                   placeholder="Select Date Range"
+                   type="text">
+        </div>
+    </div>
+</div>
+<!--Filter by duration-->
+<h6 class="text-center" style="font-weight: 700; font-size: 120%" *ngIf="queryDate">Details from {{startDate | date: "mediumDate"}} to {{endDate | date: "mediumDate"}}</h6>
+<h5 class="text-center" style="font-weight: 700; font-size: 120%"><strong>3</strong> more days to the close of this Cycle</h5>
+
+<!--Statistics Tabs-->
+<div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+        <div class="w-100 h-100p">
+            <ngx-charts-number-card (select)="onSelect($event)" [innerPadding]="0" [results]="employees"
+                                    [scheme]="employeesBgColor"
+                                    [textColor]="'#fff'">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+        <div class="w-100 h-100p">
+            <ngx-charts-number-card (select)="onSelect($event)" [innerPadding]="0" [results]="amountBorrowed"
+                                    [scheme]="amountBorrowedBgColor"
+                                    [textColor]="'#fff'">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+        <div class="w-100 h-100p">
+            <ngx-charts-number-card (select)="onSelect($event)" [innerPadding]="0" [results]="uniqueEmployees"
+                                    [scheme]="uniqueEmployeesBgColor"
+                                    [textColor]="'#fff'">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 pl-2 pr-2 mb-4">
+        <div class="w-100 h-100p">
+            <ngx-charts-number-card (select)="onSelect($event)" [innerPadding]="0" [results]="totalLoansNumber"
+                                    [scheme]="totalLoansNumberBgColor"
+                                    [textColor]="'#fff'">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+</div>
+<!--Statistics Tabs-->
+
+<hr>
+
+
+<!--Graphs-->
+<div class="row">
+    <div class="col-6">
+        <h5 class="text-left">Total number of loans</h5>
+        <ngx-charts-bar-vertical
+                (select)="onSelect($event)"
+                [gradient]="gradient"
+                [legendPosition]="'below'"
+                [legend]="showLegend"
+                [results]="noOfLoansData"
+                [scheme]="colorScheme"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [view]="view"
+                [xAxisLabel]="xAxisLabel"
+                [xAxis]="showXAxis"
+                [yAxisLabel]="yAxisLabel"
+                [yAxis]="showYAxis">
+        </ngx-charts-bar-vertical>
+    </div>
+
+    <div class="col-6">
+        <h5 class="text-left">Total Amount Borrowed</h5>
+        <ngx-charts-bar-vertical
+                (select)="onSelect($event)"
+                [gradient]="gradient"
+                [legendPosition]="'below'"
+                [legend]="showLegend"
+                [results]="amountOfLoansData"
+                [scheme]="colorScheme"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [view]="view"
+                [xAxisLabel]="xAxisLabel"
+                [xAxis]="showXAxis"
+                [yAxisLabel]="'Amount Borrowed'"
+                [yAxis]="showYAxis">
+        </ngx-charts-bar-vertical>
+    </div>
+</div>
+
+
+<!--Graphs-->
+
+
+<!--<div class="row">-->
+
+<!--    <div class="col-4">-->
+<!--        <h5> Loan Applications By Loan Type</h5>-->
+<!--        <ngx-charts-bar-vertical-->
+<!--                (select)="onSelect($event)"-->
+<!--                [gradient]="gradient"-->
+<!--                [legendPosition]="'below'"-->
+<!--                [legend]="showLegend"-->
+<!--                [results]="single"-->
+<!--                [scheme]="colorScheme"-->
+<!--                [showXAxisLabel]="showXAxisLabel"-->
+<!--                [showYAxisLabel]="showYAxisLabel"-->
+<!--                [view]="view"-->
+<!--                [xAxisLabel]="xAxisLabel"-->
+<!--                [xAxis]="showXAxis"-->
+<!--                [yAxisLabel]="yAxisLabel"-->
+<!--                [yAxis]="showYAxis">-->
+<!--        </ngx-charts-bar-vertical>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; <div class="col-md-6 col-sm-6">-->
+<!--   <app-inv-category-pie-chart [selectedProduct]="selectedProduct"></app-inv-category-pie-chart>-->
+<!-- </div>  &ndash;&gt;-->
+<!--    <div class="col-4">-->
+<!--        <h5> Loan Applications By Corporates (Top 5)</h5>-->
+<!--        <app-applications-by-corporate></app-applications-by-corporate>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; <div class="col-md-6 col-sm-6" *ngIf="shown">-->
+<!--      <app-inv-category-pie-chart [selectedProduct]="selectedProduct"></app-inv-category-pie-chart>-->
+<!--    </div> &ndash;&gt;-->
+
+<!--</div>-->
+
+

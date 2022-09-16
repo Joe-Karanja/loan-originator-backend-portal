@@ -1,0 +1,73 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" [formGroup]="form">
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="language_id">Language</label>
+        <select formControlName="language_id" class="form-control custom-select" id="language_id">
+          <option *ngFor="let item of tenantLanguages" [value]="item.id">{{item.language}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Title Template</label>
+        <input formControlName="title_template" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('title_template').touched && form.get('title_template').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Text Template</label>
+        <input formControlName="text_template" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('text_template').touched && form.get('text_template').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="text-gray">Invalid Selection Message</label>
+        <input formControlName="invalid_selection_message" class="form-control" type="text">
+        <small class="text-danger"
+          *ngIf="form.get('invalid_selection_message').touched && form.get('invalid_selection_message').hasError('required')">Required
+          Field</small>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group d-flex justify-content-between">
+        <div class="custom-control custom-checkbox">
+          <input formControlName="is_active" type="checkbox" class="custom-control-input" id="is_active">
+          <label class="custom-control-label" for="is_active">Is Active</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="loading" class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+      aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+  </div>
+  <div *ngIf="errorMessages" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div *ngFor="let err of errorMessages">{{err}}</div>
+  </div>
+</div>
+<div class="modal-footer">
+
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button *ngIf="!formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+    (click)="submitData()">Create Record</button>
+  <button *ngIf="formData" [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary"
+    (click)="saveChanges()">Save Record</button>
+
+</div>

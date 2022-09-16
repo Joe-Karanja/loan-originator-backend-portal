@@ -1,0 +1,73 @@
+<div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="center center">
+    <div fxFlex="23%">
+        <mat-card class="mt">
+            <h2 class="card-title"><mat-icon>forward</mat-icon>&nbsp;Unassigned Roles</h2>
+            
+            <mat-card-content>
+                <mat-divider></mat-divider>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <mat-form-field appearance="outline">
+                        <mat-icon matSuffix>search</mat-icon>
+                        <input matInput placeholder="Search role" aria-placeholder="Search role"
+                        [(ngModel)]="searchText" name="searchText"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="matSelectData">
+                    <mat-selection-list [(ngModel)]="role" name="role" (ngModelChange)="assignRole($event)">
+                        <mat-list-option *ngFor="let role of unassignedRoles | search: searchText" [value]="role.id">{{role.name}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+               
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex="23%" fxFlexAlign="center" fxFlexOffset="10px">
+        <div fxLayout="row" class="actionsBtn">
+            <mat-list>
+                <mat-list-item>
+                    <div *ngIf="!disableBtn && authorizeAssignUnassign; else disableAction">
+                        <button mat-raised-button class="atma-background" (click)="assignRoles(rolesToAssign)"><mat-icon>chevron_right</mat-icon>Assign Role/s</button>
+                    </div>
+                    <ng-template #disableAction>
+                        <button mat-raised-button class="atma-background" (click)="assignRoles(rolesToAssign)" disabled><mat-icon>chevron_right</mat-icon>Assign Role/s</button>
+                    </ng-template>
+                    
+                </mat-list-item>
+                
+                <mat-list-item>
+                    <div *ngIf="disableBtn && authorizeAssignUnassign; else disableRemove">
+                        <button mat-raised-button class="atma-danger" (click)="removeAssignedRoles(rolesToRemove)"><mat-icon>chevron_left</mat-icon>Remove Role/s</button>
+                    </div>
+                    <ng-template #disableRemove>
+                        <button mat-raised-button class="atma-danger" disabled><mat-icon>chevron_left</mat-icon>Remove Role/s</button>
+                    </ng-template>
+                    
+                </mat-list-item>
+                
+            </mat-list>
+        </div>
+       
+    </div>
+    <div fxFlex="23%" fxFlexOffset="1px">
+        <mat-card class="mt">
+            <h2 class="card-title"><mat-icon>check_circle</mat-icon>&nbsp;Assigned Roles</h2>
+            <mat-card-content>
+                <mat-divider></mat-divider>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <mat-form-field appearance="outline">
+                        <mat-icon matSuffix>search</mat-icon>
+                        <input matInput placeholder="Search role" aria-placeholder="Search role" [(ngModel)]="searchRole" name="searchRole"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="matSelectData">
+                    <mat-selection-list [(ngModel)]="role" name="role" (ngModelChange)="removeRoles($event)">
+                        <mat-list-option *ngFor="let role of assignedRoles | search: searchRole" [value]="role.id">{{role.name}}</mat-list-option>
+                    </mat-selection-list>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

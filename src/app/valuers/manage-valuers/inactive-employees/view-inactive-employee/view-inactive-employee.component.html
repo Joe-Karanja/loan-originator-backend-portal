@@ -1,0 +1,62 @@
+<mat-tab-group>
+
+    <mat-tab label="Employee Details">
+
+        <div class="row mt-4">
+            <div class="col-sm">
+                <div class="card mat-elevation-z8 mb-2" style="background-color: white!important;">
+                    <div class="text-center pt-2" style="color: green; font-size: 120%; font-weight: 700">
+                        Employee Information
+                    </div>
+                    <div class="card-body">
+                        <table class="table-responsive">
+                            <p><strong>Company Name:</strong> <span class="float-right">{{'company.name'}}</span></p>
+                            <p><strong>Box No:</strong> <span class="float-right">{{'company.postal_address'}}</span>
+                            </p>
+                            <p><strong>Branch Location:</strong> <span class="float-right">{{'company.branch'}}</span>
+                            </p>
+                            <p><strong>Email:</strong> <span class="float-right">{{'company.email'}}</span></p>
+                            <p><strong>Reg number:</strong> <span class="float-right">{{'company.reg_no'}}</span></p>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card mat-elevation-z8 mb-2" style="background-color: white!important;">
+                    <div class="text-center pt-2" style="color: green; font-size: 120%; font-weight: 700">
+                        Loan & Account Information
+                    </div>
+                    <div class="card-body">
+                        <table class="table-responsive">
+                            <p><strong>Opening Date:</strong> <span class="float-right">{{'22-07-2012'}}</span></p>
+                            <p><strong>Closing Date:</strong> <span class="float-right">{{'22-07-2012'}}</span></p>
+                            <p><strong>Processing Fee:</strong> <span class="float-right">{{30000}}</span></p>
+                            <p><strong>Loan Percentage:</strong> <span class="float-right">{{'20%'}}</span></p>
+                            <p><strong>Created At:</strong> <span class="float-right">{{'22-07-2012'}}</span></p>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center mx-auto align-items-center m-2">
+            <div class="col">
+                <button class="btn btn-success mt-4 mr-2"
+                        type="button"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Activate Employee
+                </button>
+            </div>
+            <div class="col">
+                <button class="btn btn-danger mt-4"
+                        type="button"><i class="fa fa-times"></i>&nbsp;&nbsp;Reject Employee
+                </button>
+            </div>
+        </div>
+
+    </mat-tab>
+
+
+<!--    <mat-tab label="Employee Loans">-->
+<!--        Employee Loans zinakam hapa....-->
+<!--    </mat-tab>-->
+
+</mat-tab-group>

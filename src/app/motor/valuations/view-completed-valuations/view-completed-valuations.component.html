@@ -1,0 +1,254 @@
+<div class="row">
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        APPLICATION INFORMATION
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Application ID #
+          </th>
+          <tr>
+            <td>{{application.applied_product_id}}</td>
+          </tr>
+          <th>
+            Applicant
+          </th>
+          <tr>
+            <td>{{application.full_name}}</td>
+          </tr>
+          <th>
+            Phone Number
+          </th>
+          <tr>
+            <td>{{application.mobile_number}}</td>
+          </tr>
+          <th>
+            Email Address
+          </th>
+          <tr>
+            <td>{{application.email_address}}</td>
+          </tr>
+          <th>
+            <h6 class="text-center"> Vehicle Details</h6>
+          </th>
+          <tr>
+            <td></td>
+          </tr>
+
+          <th>
+            Vehicle Registration No
+          </th>
+          <tr>
+            <td>{{application.car_reg_no}}</td>
+          </tr>
+          <th>
+            Type Of Vehicle
+          </th>
+          <tr>
+            <td>{{application.type_of_vehicle}}</td>
+          </tr>
+          <th>
+            No. of passengers
+          </th>
+          <tr>
+            <td>{{application.number_of_passengers}}</td>
+          </tr>
+          <th>
+            Year Of Manufacture
+          </th>
+          <tr>
+            <td>{{application.yom}}</td>
+          </tr>
+
+          <th>
+            <h6 class="text-center"> Application Details</h6>
+          </th>
+          <tr>
+            <td></td>
+          </tr>
+          <th>
+            Valuation Status
+          </th>
+          <tr>
+            <td>{{application.valuation_status}}</td>
+          </tr>
+          <th>
+            Valuation Amount
+          </th>
+          <tr>
+            <td>{{application.valuation_amount | currency: 'Kes.'}}</td>
+          </tr>
+
+          <th>
+            Created On
+          </th>
+          <tr>
+            <td>{{application.esb_timestamp | date: "mediumDate"}}</td>
+          </tr>
+
+
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4" *ngIf="application">
+    <div widget class="card border-0 box-shadow">
+      <div class="text-center pt-2" style="color: green;">
+        VALUATION DETAILS
+      </div>
+      <div class="card-body pt-0 widget-body">
+        <table class="table-responsive">
+          <th>
+            Assessed Value
+          </th>
+          <tr>
+            <td>
+              <h1>{{application.assessed_value | currency: 'Kes.'}}</h1>
+            </td>
+          </tr>
+          <th>
+            Suggested Premium Amount
+          </th>
+          <tr>
+            <td>
+              <h1>{{application.premium_amount | currency: 'Kes.'}}</h1>
+            </td>
+          </tr>
+          <th>
+            Valuation Company
+          </th>
+          <tr>
+            <td>{{application.valuer_name}}</td>
+          </tr>
+          <th>
+            Valuation Date
+          </th>
+          <tr>
+            <td>{{application.valuation_date | date:'longDate'}}</td>
+          </tr>
+          <th>
+            Valuation Fee
+          </th>
+          <tr>
+            <td>{{application.valuation_amount | currency: 'Kes.'}}</td>
+          </tr>
+          <th>
+              Paid Amount
+            </th>
+            <tr>
+              <td>{{application.paid_amount | currency: 'Kes.'}}</td>
+            </tr>
+
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-4" *ngIf="application">
+      <div widget class="card border-0 box-shadow">
+          <div class="text-center pt-2" style="color: green;">
+              Verify and approve/reject
+            </div>
+    <div class="card-body pt-0 widget-body">
+      <div [formGroup]="form">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group d-flex justify-content-between">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="ntsa_check" type="checkbox" class="custom-control-input" id="ntsa_check">
+                <label class="custom-control-label" for="ntsa_check">NTSA confirmed</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group d-flex justify-content-between">
+                <div class="custom-control custom-checkbox">
+                  <input formControlName="valuer_report_check" type="checkbox" class="custom-control-input" id="valuer_report_check">
+                  <label class="custom-control-label" for="valuer_report_check">Valuation Report </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group d-flex justify-content-between">
+                  <div class="custom-control custom-checkbox">
+                    <input formControlName="driving_licence_check" type="checkbox" class="custom-control-input" id="driving_licence_check">
+                    <label class="custom-control-label" for="driving_licence_check">Driving License </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group d-flex justify-content-between">
+                    <div class="custom-control custom-checkbox">
+                      <input formControlName="log_book_check" type="checkbox" class="custom-control-input" id="log_book_check">
+                      <label class="custom-control-label" for="log_book_check">Log Book </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group d-flex justify-content-between">
+                      <div class="custom-control custom-checkbox">
+                        <input formControlName="iprs_check" type="checkbox" class="custom-control-input" id="iprs_check">
+                        <label class="custom-control-label" for="iprs_check">IPRS Check </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group d-flex justify-content-between">
+                        <div class="custom-control custom-checkbox">
+                          <input formControlName="images_check" type="checkbox" class="custom-control-input" id="images_check">
+                          <label class="custom-control-label" for="images_check">Vehicle Images </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label class="text-gray">Premium Amount</label>
+              <input formControlName="premium_amount" class="form-control" type="text">
+              <small class="text-danger"
+                *ngIf="form.get('premium_amount').touched && form.get('premium_amount').hasError('required')">Required
+                Field</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="text-gray">Narration</label>
+                <textarea formControlName="comment" class="form-control" type="text"></textarea>
+                <small class="text-danger"
+                  *ngIf="form.get('comment').touched && form.get('comment').hasError('required')">Required
+                  Field</small>
+              </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+            <button  type="button" class="btn  btn-md btn-danger" (click)="submit('reject')"><i class="fa fa-stop"></i>Reject</button>
+            <button   type="button" class="btn  btn-md btn-primary" (click)="submit('approve')"><i class="fa fa-check"></i>Approve</button>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </div>

@@ -1,0 +1,59 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex.gt-sm="90.00%" fxFlex="100">
+        <nz-card nzSize="large" nzTitle="Available Profiles" [nzExtra]="extraTemplate">
+          <nz-table #basicTable [nzData]="profiles" ngSize="small" [nzBordered]="false" [nzFrontPagination]="false" [nzLoading]="loading" nzShowSizeChanger [nzTotal]="total" [nzPageSize]="perPage" [nzPageIndex]="page" nzShowSizeChanger (nzQueryParams)="onQueryParamsChange($event)">
+            <thead>
+              <tr>
+                <th>Profile Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>CreatedOn</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td >{{data.name | titlecase}}</td>
+                <td>{{data.remarks}}</td>
+                <td>
+                  <app-active-label [labelValue]="data.isActive"></app-active-label>
+                </td>
+                <td>{{data.createdOn}}</td>
+                
+                <td>
+                    <button nz-button nzType="primary" nzSize="small" nzGhost 
+                    [matMenuTriggerFor]="menu"><mat-icon>settings</mat-icon>&nbsp;
+                    Actions
+                    </button>
+                    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                        <button mat-menu-item (click)="viewProfile(data)">
+                            <mat-icon>remove_red_eye</mat-icon>View
+                        </button>
+                        <button mat-menu-item (click)="editProfileDetails(data)">
+                          <mat-icon>edit</mat-icon>Edit
+                      </button>
+                    </mat-menu>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-card>
+        <ng-template #extraTemplate>
+          <button nz-button nzType="primary" (click)="createProfile('')"><mat-icon>assignment_ind</mat-icon>&nbsp;Add Profile</button>&nbsp;
+          <button nz-button nzType="primary" [matMenuTriggerFor]="menu"><mat-icon> import_export</mat-icon>&nbsp;Export Data</button>
+          <mat-menu #menu="matMenu" [overlapTrigger]="false">
+              <!-- <button mat-menu-item>
+                  <mat-icon>file_copy</mat-icon>CSV
+              </button> -->
+              <button (click)="exportXLSX()" mat-menu-item>
+                  <mat-icon>file_copy</mat-icon>
+                  XLSX
+              </button>
+              <button (click)="exportProfilesPDF()" mat-menu-item>
+                  <mat-icon>picture_as_pdf</mat-icon>
+                  PDF
+              </button>
+          </mat-menu>
+        </ng-template>
+    </div>
+</div>
